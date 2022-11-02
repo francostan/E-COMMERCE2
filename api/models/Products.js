@@ -40,5 +40,5 @@ Products.init(
   },
   { sequelize: db, modelName: "products" }
 );
-
+//Coment Agregado
 module.exports = Products;
