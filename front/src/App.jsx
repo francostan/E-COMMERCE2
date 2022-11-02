@@ -1,9 +1,9 @@
-import React from "react";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { Route, Routes } from "react-router";
 import Register from "./components/Register";
+import Login from "./components/Login";
 
-const App = () => {
+function App() {
   return (
     <div>
       <p>¡Bienvenidos a E-COMMERCE!</p>
@@ -16,6 +16,6 @@ const App = () => {
       </Routes>
     </div>
   );
-};
+}
 
 export default App;
