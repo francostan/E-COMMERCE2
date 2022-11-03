@@ -34,11 +34,12 @@ const addProducts = (req, res, next) => {
 };
 
 const deleteById = (req, res, next) => {
-  const { id } = req.params;
   Products.destroy({
-    where: { id: id },
+    where: { id: req.params.id },
   })
-    .then(() => res.statusCode(202))
+    .then(() => {
+      res.sendStatus(204);
+    })
     .catch((err) => {
       return console.log("error", err);
     });
