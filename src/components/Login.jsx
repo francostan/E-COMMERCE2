@@ -1,20 +1,17 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const handleEmail = (e) => {
-    e.preventDefault();
-    setEmail(e.target.value);
-  };
-  const handlePassword = (e) => {
-    e.preventDefault();
-    setPassword(e.target.value);
-  };
+  const navigate = useNavigate();
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log("Hola");
+    const data = { email, password };
+    axios.post("/login", data);
+    navigate("/").catch((error) => console.log(error));
   };
 
   return (
@@ -22,20 +19,22 @@ const Login = () => {
       <div>
         <h2>Log in</h2>
       </div>
-
       <form>
         <div>
-          <label for="email">Email</label>
-          <input type="text" onChange={handleEmail} />
+          <label htmlFor="email">Email: </label>
+          <input type="text" onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div>
-          <label for="password">Password</label>
-          <input type="password" onChange={handlePassword} />
+          <label htmlFor="password">Password: </label>
+          <input
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
         <div>
           <div>
             <input type="checkbox" />
-            <label for="password">Recuerdame</label>
+            <label htmlFor="password">Remember Me</label>
           </div>
           <button type="submit" onClick={handleClick}>
             Ingresa
