@@ -1,4 +1,6 @@
 const express = require("express");
+const ShoppingCart = require("../models/ShoppingCart");
+const Products = require("../models/Products");
 
 const router = express.Router();
 const {
@@ -8,15 +10,15 @@ const {
   addProducts,
 } = require("../controllers/productsController");
 
-// find all /products
+// find all api/products
 //Ya testeado
 router.get("/", getAll);
 
-// /products/:id
+// api/products/:id
 //testeado
 router.get("/:id", getById);
 
-// /products/add
+// api/products/add
 //Ya testeado
 router.post("/add", addProducts);
 
@@ -26,6 +28,19 @@ router.put("/:id", (req, res, next) => {
   );
 });
 
+//Ruta para testear las relaciones
+
+// router.post("/test", (req, res, next) => {
+//   const { lastname, email, name } = req.body;
+
+//   ShoppingCart.findOrCreate({
+//     where: {
+//       id: req.params.id,
+//     },
+//   }).then(() => {});
+// });
+
+// api/products/:id
 router.delete("/:id", deleteById);
 
 module.exports = router;
