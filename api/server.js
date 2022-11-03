@@ -49,7 +49,7 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500).end();
 });
 
-db.sync({ force: false }).then(() => {
+db.sync({ force: false}).then(() => {
   app.listen(PORT, () => {
     console.log("Escuchando en el puerto ", PORT);
   });

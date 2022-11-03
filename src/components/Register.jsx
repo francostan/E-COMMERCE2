@@ -1,22 +1,26 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import useInput from "../hooks/useInput";
 import axios from "axios";
-import React, { useState } from "react";
+import { useNavigate } from "react-router";
 
 const Register = () => {
-  const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordVal, setPasswordVal] = useState("");
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    const data = { name, lastName, email, password };
-    console.log(data);
-    axios
-      .post("/api/users/register", data)
-      .then(() => console.log("user Created"))
-      .catch((error) => console.log(error));
-  };
+const name = useInput("");
+const lastname= useInput("");
+const email = useInput("");
+const password = useInput("");
+const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios.post("/api/users/register", {name: name.value, lastname: lastname.value, email: email.value, password: password.value})  
+        .then((res) => res.data)
+        .then((user)=> {
+            alert(`Usuario creado con exito, ve a login para ingresar, ${user.name}!`);
+            navigate("/login")})
+        .catch((err) => console.error(err));
+    };
 
   return (
     <div>
@@ -25,48 +29,22 @@ const Register = () => {
           <div>
             <h2>Registrate a DIVINO</h2>
             <div>
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div>
-                  <input
-                    type="text"
-                    id="nombre"
-                    placeholder="Nombre"
-                    onChange={(e) => setName(e.target.value)}
-                  />
+                  <input {...name}type="text" placeholder="Nombre" />
                 </div>
                 <div>
-                  <input
-                    type="text"
-                    id="apellido"
-                    placeholder="Apellido"
-                    onChange={(e) => setLastName(e.target.value)}
-                  />
+                  <input {...lastname}type="text" placeholder="Apellido" />
                 </div>
                 <div>
-                  <input
-                    type="email"
-                    id="email"
-                    placeholder="Email"
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
+                  <input {...email}type="email"  placeholder="Email" />
                 </div>
                 <div>
-                  <input
-                    type="password"
-                    id="password"
-                    placeholder="Password"
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
+                  <input {...password}type="password" id="password" placeholder="Password" />
                 </div>
-                <div>
-                  <input
-                    type="password"
-                    id="confirm-password"
-                    placeholder="confirm-password"
-                    onChange={(e) => setPasswordVal(e.target.value)}
-                  />
-                </div>
-                <button onClick={handleClick}>Crear cuenta</button>
+                
+                
+                <button>Crear cuenta</button>
                 <div>Ya tenés cuenta?</div>
                 <button>Login</button>
               </form>
