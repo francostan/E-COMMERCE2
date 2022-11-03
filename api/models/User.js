@@ -21,7 +21,7 @@ class User extends S.Model {
 User.init(
   {
     name: { type: S.STRING, allowNull: false },
-    lastName: { type: S.STRING, allowNull: false },
+    lastname: { type: S.STRING, allowNull: false },
     email: {
       type: S.STRING,
       allowNull: false,
@@ -39,6 +39,7 @@ User.init(
     },
     birthDate: {
       type: S.DATE,
+      allowNull: true,
     },
     salt: {
       type: S.STRING,
