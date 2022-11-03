@@ -1,5 +1,5 @@
 const express = require("express");
-const Products = require("../models/Products");
+
 const router = express.Router();
 const {
   getAll,
@@ -20,7 +20,11 @@ router.get("/:id", getById);
 //Ya testeado
 router.post("/add", addProducts);
 
-router.put("/:id", (req, res, next) => {});
+router.put("/:id", (req, res, next) => {
+  console.log(
+    "end point del put, solo hay que ver que es lo que quiero modificar en este path"
+  );
+});
 
 router.delete("/:id", deleteById);
 
