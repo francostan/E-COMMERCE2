@@ -8,15 +8,15 @@ const {
   addProducts,
 } = require("../controllers/productsController");
 
-// find all /products
+// find all api/products
 //Ya testeado
 router.get("/", getAll);
 
-// /products/:id
+// api/products/:id
 //testeado
 router.get("/:id", getById);
 
-// /products/add
+// api/products/add
 //Ya testeado
 router.post("/add", addProducts);
 
@@ -26,6 +26,7 @@ router.put("/:id", (req, res, next) => {
   );
 });
 
+// api/products/:id
 router.delete("/:id", deleteById);
 
 module.exports = router;
