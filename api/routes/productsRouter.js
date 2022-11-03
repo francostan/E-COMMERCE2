@@ -1,4 +1,6 @@
 const express = require("express");
+const ShoppingCart = require("../models/ShoppingCart");
+const Products = require("../models/Products");
 
 const router = express.Router();
 const {
@@ -24,6 +26,16 @@ router.put("/:id", (req, res, next) => {
   console.log(
     "end point del put, solo hay que ver que es lo que quiero modificar en este path"
   );
+});
+
+router.post("/test", (req, res, next) => {
+  const { lastname, email, name } = req.body;
+
+  ShoppingCart.findOrCreate({
+    where: {
+      id: req.params.id,
+    },
+  }).then(() => {});
 });
 
 // api/products/:id
