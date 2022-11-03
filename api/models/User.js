@@ -39,10 +39,6 @@ User.init(
     },
     birthDate: {
       type: S.DATE,
-<<<<<<< HEAD
-      allowNull: true,
-=======
->>>>>>> 3fba350 (Model Shopping)
     },
     salt: {
       type: S.STRING,

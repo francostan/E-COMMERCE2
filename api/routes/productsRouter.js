@@ -28,15 +28,17 @@ router.put("/:id", (req, res, next) => {
   );
 });
 
-router.post("/test", (req, res, next) => {
-  const { lastname, email, name } = req.body;
+//Ruta para testear las relaciones
 
-  ShoppingCart.findOrCreate({
-    where: {
-      id: req.params.id,
-    },
-  }).then(() => {});
-});
+// router.post("/test", (req, res, next) => {
+//   const { lastname, email, name } = req.body;
+
+//   ShoppingCart.findOrCreate({
+//     where: {
+//       id: req.params.id,
+//     },
+//   }).then(() => {});
+// });
 
 // api/products/:id
 router.delete("/:id", deleteById);
