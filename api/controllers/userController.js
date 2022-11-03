@@ -4,9 +4,9 @@ const validateCookie = require("../middlewares/auth");
 
 class userController {
   static createUser(req, res) {
-    const { name, lastname, email, password } = req.body;
+    const { name, lastName, email, password } = req.body;
 
-    User.create({ name, lastname, email, password }).then((user) =>
+    User.create({ name, lastName, email, password }).then((user) =>
       res.status(201).json(user)
     );
   }
@@ -51,8 +51,7 @@ class userController {
   static logoutUser(req, res) {
     res.clearCookie("token");
     res.sendStatus(204);
-  };
-
+  }
 }
 
 module.exports = userController;

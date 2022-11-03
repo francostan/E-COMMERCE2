@@ -39,7 +39,7 @@ User.init(
     },
     birthDate: {
       type: S.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     salt: {
       type: S.STRING,
