@@ -15,8 +15,8 @@ const initialState = {
 
 const userReducer = createReducer(initialState, {
     [setUser]: (state, action) => ({...action.payload, favorites: [], carrito: []}),
-    [setFavorites]: (state, action) => (state.favorites.push(action.payload)),
-    [setCarrito]: (state, action) => (state.carrito.push(action.payload)),
+    [setFavorites]: (state, action) => {state.favorites.push(action.payload)},
+    [setCarrito]: (state, action) => {state.carrito.push(action.payload)},
 });
 
 export default userReducer;

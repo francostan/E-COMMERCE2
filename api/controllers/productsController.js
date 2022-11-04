@@ -24,13 +24,9 @@ const getById = (req, res, next) => {
 
 //Post
 const addProducts = (req, res, next) => {
-  Products.findOrCreate({
-    where: req.body,
-  })
-    .then(([user, created]) => {
-      res.send(user).status(201);
-    })
-    .catch(next);
+    Products.create(req.body)
+      .then((producto) => res.status(201).send(producto))
+      .catch((err) => console.log("error", err));
 };
 
 const deleteById = (req, res, next) => {
