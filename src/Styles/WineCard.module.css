@@ -20,7 +20,7 @@ li {
   height: 100%;
   width: 100%;
 
-  background-size: 230px 345px;
+  background-size: 330px 330px;
   background-position: left top;
   transition: all 0.5s ease-in-out;
 }
@@ -31,7 +31,7 @@ li {
   font-size: 20px;
   text-align: center;
   font-weight: 700;
-  color: #fffc;
+  color: black;
   padding: 15px 10px;
   position: relative;
   bottom: 0;
