@@ -52,9 +52,7 @@ User.addHook("beforeCreate", (user) => {
   return user
     .hashPassword(user.password, user.salt)
     .then((hash) => {
-      console.log(hash);
       user.password = hash;
-      console.log(user.password);
     })
     .catch((err) => console.log(err));
 });

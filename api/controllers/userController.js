@@ -4,9 +4,9 @@ const validateCookie = require("../middlewares/auth");
 
 class userController {
   static createUser(req, res) {
-    const { name, lastName, email, password } = req.body;
+    const { name, lastname, email, password } = req.body;
 
-    User.create({ name, lastName, email, password }).then((user) =>
+    User.create({ name, lastname, email, password }).then((user) =>
       res.status(201).json(user)
     );
   }
