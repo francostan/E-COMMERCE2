@@ -28,7 +28,7 @@ router.put("/:id", (req, res, next) => {
   );
 });
 
-//Ruta para testear las relaciones
+//Ruta para testear las relaciones de la db, de momento solo ignorar
 
 // router.post("/test", (req, res, next) => {
 //   const { lastname, email, name } = req.body;
