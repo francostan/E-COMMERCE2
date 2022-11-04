@@ -1,8 +1,8 @@
 const User = require("./User");
 const Products = require("./Products");
-const ShoppingCart = require("./ShoppingCart");
+const CarritoDeCompras = require("./ShoppingCart");
 
-ShoppingCart.hasMany(Products, { as: "product" });
-ShoppingCart.belongsTo(User, { as: "user" });
+CarritoDeCompras.hasMany(Products, { as: "product" });
+CarritoDeCompras.belongsTo(User, { as: "user" });
 
-module.exports = { User, Products, ShoppingCart };
+module.exports = { User, Products, CarritoDeCompras };

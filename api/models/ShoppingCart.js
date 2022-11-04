@@ -1,14 +1,14 @@
 const S = require("sequelize");
 const db = require("../config/db");
 
-class ShoppingCart extends S.Model {}
-ShoppingCart.init(
+class CarritoDeCompras extends S.Model {}
+CarritoDeCompras.init(
   {
     cantidad: {
       type: S.INTEGER,
       defaultValue: 0,
     },
   },
-  { sequelize: db, modelName: "shoppingCart" }
+  { sequelize: db, modelName: "carritoDeCompras" }
 );
-module.exports = ShoppingCart;
+module.exports = CarritoDeCompras;
