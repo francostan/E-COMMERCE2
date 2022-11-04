@@ -5,27 +5,32 @@
   box-sizing: border-box;
 }
 .navbar {
-  display: inline-block;
+  /* display: inline-block; */
 }
 
 nav {
   background-color: rgb(67, 30, 90);
   color: white;
+  display: flex;
+  flex-direction: row;
   width: 100vw;
   height: 8vh;
+  border-bottom: 2px solid black;
 }
 label {
   font-weight: bold;
   line-height: 2.9rem;
   margin-left: 1rem;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 nav ul {
-  float: right;
+  display: flex;
+  flex-direction: row;
+  /*float: right;*/
   margin-right: 2rem;
 }
 nav ul li {
-  display: inline-block;
+  display: flex;
   line-height: 2.9rem;
   margin: 0 8px;
 }
@@ -41,4 +46,26 @@ button {
 
 button:hover {
   background-color: #cbcbcb;
+}
+.logo {
+  color: white;
+}
+
+.logo:hover {
+  color: rgb(152, 152, 152);
+}
+
+.pruebaLi {
+  display: flex;
+  justify-content: end;
+  flex-wrap: wrap;
+}
+
+.logoContainer {
+  justify-content: center;
+  text-decoration: none;
+}
+
+.ulContainer {
+  justify-content: end;
 }
