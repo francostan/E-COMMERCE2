@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { setUser } from "../store/user";
 import { setProducts } from "../store/products";
 import "../Styles/NavBar.css";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   //le avisamos al store que hay un nuevo usuario logueado
   const dispatch = useDispatch();
 
@@ -43,6 +44,22 @@ const Navbar = () => {
       );
   }, []);
  */
+  const handlerLogOut = (e) => {
+    axios
+      .post("/api/users/logout")
+      .then((reStatus) => {
+        dispatch(
+          setUser({ id: null, name: null, lastname: null, email: null })
+        );
+        alert("Sesion cerrada con exito");
+
+        navigate("/");
+      })
+      .catch((err) => console.error(err));
+
+    navigate("/");
+  };
+
   return (
     <div className="navbar">
       <nav>
@@ -59,9 +76,8 @@ const Navbar = () => {
               {user.name ? (
                 <>
                   <p>{user.name}</p>
-                  <Link to="/logout">
-                    <button>Logout</button>
-                  </Link>
+
+                  <button onClick={handlerLogOut}>Logout</button>
                 </>
               ) : (
                 <>
