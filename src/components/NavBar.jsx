@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { setUser } from "../store/user";
 import { setProducts } from "../store/products";
-
+import "../styles/NavBar.css";
 const Navbar = () => {
   //le avisamos al store que hay un nuevo usuario logueado
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const Navbar = () => {
       );
   }, []);
 
-/*   useEffect(() => {
+  /*   useEffect(() => {
     //la idea es que cada vez que cambie el usuario, se traigan los productos
     //tambien SIEMPRE QUE CARGUE LA NAVBAR, los setea(products) en el store
     axios
@@ -43,28 +43,36 @@ const Navbar = () => {
   }, []);
  */
   return (
-    <nav>
-      <h3>E-Commerce</h3>
-
-      {user.name ? (
-        <div>
-          <p>{user.name}</p>
-          <Link to="/logout">
-            <Button>Logout</Button>
-          </Link>
-        </div>
-      ) : (
-        <div>
-          <Link to="/register">
-            <Button>Register</Button>
-          </Link>
-          <Link to="/login">
-            <Button>Login</Button>
-          </Link>
-        </div>
-      )}
-      
-    </nav>
+    <div className="navbar">
+      <nav>
+        <Link to="/">
+          <label>DIVINO</label>
+        </Link>
+        <ul>
+          <li>CATEGORIAS</li>
+          <li>PRODUCTOS</li>
+          <li>
+            {user.name ? (
+              <div>
+                <p>{user.name}</p>
+                <Link to="/logout">
+                  <Button>Logout</Button>
+                </Link>
+              </div>
+            ) : (
+              <div>
+                <Link to="/register">
+                  <Button>REGISTER</Button>
+                </Link>
+                <Link to="/login">
+                  <Button>LOGIN</Button>
+                </Link>
+              </div>
+            )}{" "}
+          </li>
+        </ul>
+      </nav>
+    </div>
   );
 };
 
