@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setFavorites } from "../store/user";
 import axios from "axios";
-import CardFav from "../components/CardFav";
+import Card from "../commons/Card";
 
 
 const Favoritos = () => {
@@ -11,12 +11,14 @@ const Favoritos = () => {
   const user = useSelector((state) => state.user);
   //ingresamos a la propiedad que posee el array de favoritos
   const favProducts = user.favorites;
+  const products = useSelector((state) => state.products);
 
   console.log(user);
+  console.log(products);
 
-  if (favProducts.length === 0) {
+ /*  if (favProducts.length === 0) {
     axios
-      .get(`/api/products/¿? que ruta trae los productos favoritos, por id de usuario?`)
+      .get(`/api/products/`)
       .then((res) => res.data)
       .then((products) => {
         if (products.length > 0) {
@@ -26,20 +28,21 @@ const Favoritos = () => {
         }
       })
       .catch((err) => console.error(err));
-  }
+  } */
+  if (favProducts.length === 0){
+  products.map((product)=> {
+    dispatch(setFavorites(product))
+  })}
+  console.log(favProducts);
   return (
-    <section>
+    <div>
       <h1>Mis favoritos</h1>
 
-      {favMovies !== [] ? (
+      {favProducts !== [] ? (
         <div className="">
-          {favMovies.map((movie) => (
-            <div
-              className="card"
-              style={{ width: "30rem", display: "flex" }}
-              id={movie.id}
-            >
-              <CardFavMov data={movie} />
+          {favProducts.map((movie) => (
+            <div key={movie.id}>
+              <Card data={movie} />
             </div>
           ))}
         </div>
@@ -48,7 +51,7 @@ const Favoritos = () => {
           <h4>No tiene favoritos por ahora</h4>
         </div>
       )}
-    </section>
+    </div>
   );
 };
 
