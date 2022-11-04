@@ -4,6 +4,7 @@ import Login from "./components/Login";
 import Logout from "./components/Logout";
 import Navbar from "./components/NavBar";
 import Home from "./components/Home";
+import Favoritos from "./components/Favoritos";
 import { Navigate } from "react-router-dom";
 import "./Styles/Global.css";
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/favoritos" element={<Favoritos />} />
       </Routes>
     </div>
   );

@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setFavorites } from "../store/user";
 import axios from "axios";
-import Card from "../commons/Card";
+import Grid from "../commons/Grid";
+import {fakeData} from "../utils/fakeData";
 
 
 const Favoritos = () => {
@@ -30,7 +31,7 @@ const Favoritos = () => {
       .catch((err) => console.error(err));
   } */
   if (favProducts.length === 0){
-  products.map((product)=> {
+  fakeData.map((product)=> {
     dispatch(setFavorites(product))
   })}
   console.log(favProducts);
@@ -40,11 +41,9 @@ const Favoritos = () => {
 
       {favProducts !== [] ? (
         <div className="">
-          {favProducts.map((movie) => (
-            <div key={movie.id}>
-              <Card data={movie} />
+            <div >
+              <Grid listVinos={favProducts}/>
             </div>
-          ))}
         </div>
       ) : (
         <div>
