@@ -1,4 +1,4 @@
-export const fakeVino = [
+export const fakeData = [
   {
     nombre: "Humberto Canale Estate Malbec 750 ml",
     precio: 2299,

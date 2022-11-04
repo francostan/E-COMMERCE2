@@ -16,20 +16,20 @@ export default function WineCard({ vino }) {
           <div
             className={styles.img1}
             style={{
-              backgroundImage: `url(rutaIndividualDelVino pasada por parametro)`,
+              backgroundImage: `url(${vino.images[0].url})`,
             }}
           ></div>
 
-          <div className={styles.title}>{"Nombre del vino"}</div>
-          <div className={styles.text}>{"Descripcion del vino"}</div>
+          <div className={styles.title}>{vino.nombre}</div>
+          <div className={styles.text}>{vino.descripcion}</div>
 
           <div className={styles.catagory}>
-            {"Categoria del vino"}
+            {vino.tipo}
             <i className="fas fa-film"></i>
           </div>
 
           <div className={styles.views}>
-            {"bodega"}
+            {vino.bodega}
             <i className="far fa-eye"></i>{" "}
           </div>
         </div>
