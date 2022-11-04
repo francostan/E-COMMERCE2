@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { setUser } from "../store/user";
 import { setProducts } from "../store/products";
-import "../styles/NavBar.css";
+import "../Styles/NavBar.css";
+
 const Navbar = () => {
   //le avisamos al store que hay un nuevo usuario logueado
   const dispatch = useDispatch();
@@ -45,32 +46,37 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <nav>
-        <Link to="/">
-          <label>DIVINO</label>
-        </Link>
-        <ul>
-          <li>CATEGORIAS</li>
-          <li>PRODUCTOS</li>
-          <li>
-            {user.name ? (
-              <div>
-                <p>{user.name}</p>
-                <Link to="/logout">
-                  <Button>Logout</Button>
-                </Link>
-              </div>
-            ) : (
-              <div>
-                <Link to="/register">
-                  <Button>REGISTER</Button>
-                </Link>
-                <Link to="/login">
-                  <Button>LOGIN</Button>
-                </Link>
-              </div>
-            )}{" "}
-          </li>
-        </ul>
+        <div className="logoContainer">
+          <Link to="/">
+            <label className="logo">DIVINO</label>
+          </Link>
+        </div>
+        <div className="ulContainer">
+          <ul>
+            <li>CATEGORIAS</li>
+            <li>PRODUCTOS</li>
+            <li>
+              {user.name ? (
+                <>
+                  <p>{user.name}</p>
+                  <Link to="/logout">
+                    <button>Logout</button>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  {" "}
+                  <Link to="/register">
+                    <button>REGISTER</button>
+                  </Link>
+                  <Link to="/login">
+                    <button>LOGIN</button>
+                  </Link>
+                </>
+              )}{" "}
+            </li>
+          </ul>
+        </div>
       </nav>
     </div>
   );
