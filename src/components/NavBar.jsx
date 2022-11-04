@@ -47,7 +47,7 @@ const Navbar = () => {
     <div className="navbar">
       <nav>
         <div className="logoContainer">
-          <Link to="/">
+          <Link to="/home">
             <label className="logo">DIVINO</label>
           </Link>
         </div>
