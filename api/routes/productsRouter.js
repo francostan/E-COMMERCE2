@@ -1,6 +1,5 @@
 const express = require("express");
-const ShoppingCart = require("../models/ShoppingCart");
-const Products = require("../models/Products");
+const CarritoDeCompras = require("../models/ShoppingCart");
 
 const router = express.Router();
 const {
@@ -28,19 +27,20 @@ router.put("/:id", (req, res, next) => {
   );
 });
 
-//Ruta para testear las relaciones de la db, de momento solo ignorar
-
-// router.post("/test", (req, res, next) => {
-//   const { lastname, email, name } = req.body;
-
-//   ShoppingCart.findOrCreate({
-//     where: {
-//       id: req.params.id,
-//     },
-//   }).then(() => {});
-// });
-
 // api/products/:id
 router.delete("/:id", deleteById);
+
+//Ruta para testear las relaciones de la db, de momento solo ignorar
+
+router.post("/test", (req, res, next) => {
+  const { lastname, email, name, id } = req.body;
+
+  CarritoDeCompras.create({ cantidad: 10 })
+    .then((carrito) => {
+      console.log(carrito);
+    })
+    .catch((err) => console.log("entro al catch", err));
+  res.sendStatus(201);
+});
 
 module.exports = router;

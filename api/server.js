@@ -21,7 +21,7 @@ app.use("/api", routes);
   res.sendFile(path.join(__dirname, "../public", "index.html"));
 }); */
 
-db.sync({ force: false }).then(() => {
+db.sync({ force: true }).then(() => {
   app.listen(PORT, () => {
     console.log("Escuchando en el puerto ", PORT);
   });

@@ -1,15 +1,9 @@
 const S = require("sequelize");
 const db = require("../config/db");
-const Products = require("./Products");
 
 class ShoppingCart extends S.Model {}
-Products.init(
+ShoppingCart.init(
   {
-    id: {
-      type: S.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
     cantidad: {
       type: S.INTEGER,
       defaultValue: 0,
