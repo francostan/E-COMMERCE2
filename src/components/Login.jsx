@@ -2,7 +2,8 @@ import React from "react";
 import useInput from "../hooks/useInput";
 import axios from "axios";
 import { useNavigate } from "react-router";
-import NavBar from "./NavBar";
+import styles from "../Styles/Login.module.css";
+
 export const Login = () => {
   const email = useInput("");
   const password = useInput("");
@@ -24,31 +25,68 @@ export const Login = () => {
       })
       .catch((err) => console.error(err));
   };
-  return (
-    <div>
-      <NavBar />
-      <div>
-        <h2>Log in</h2>
-      </div>
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label for="email">Email</label>
-          <input {...email} type="text" />
+  return (
+    <div className={styles["login-card-container"]}>
+      <div className={styles["login-card"]}>
+        <div className={styles["login-card-logo"]}>
+          <img
+            src="https://cdn.discordapp.com/attachments/1035659739486486622/1037009519676510238/LOGO_1.png"
+            alt="logo"
+          />
         </div>
-        <div>
-          <label for="password">Password</label>
-          <input {...password} type="password" />
+        <div className={styles["login-card-header"]}>
+          <h1>Sign In</h1>
+          <div>Por favor ingresa para comprar en esta plataforma.</div>
         </div>
-        <div>
-          <div>
-            <input type="checkbox" />
-            <label for="password">Recuerdame</label>
-          </div>
-          <button type="submit">Ingresar</button>
-          <div>Olvidaste tu contraseña?</div>
+        <div className={styles["login-card-form-container"]}>
+          <form onSubmit={handleSubmit} className={styles["login-card-form"]}>
+            <div className={styles["form-item"]}>
+              <div>
+                <span
+                  className={`${styles["form-item-icon"]} material-symbols-rounded`}
+                >
+                  mail
+                </span>
+              </div>
+
+              <input
+                type="email"
+                placeholder="Enter Email"
+                {...email}
+                required
+                autofocus
+              />
+            </div>
+            <div className={styles["form-item"]}>
+              <span
+                className={`${styles["form-item-icon"]} material-symbols-rounded`}
+              >
+                lock
+              </span>
+              <input
+                type="password"
+                placeholder="Enter Password"
+                {...password}
+                required
+                autofocus
+              />
+            </div>
+
+            <button type="submit">SIGN IN</button>
+
+            <div className={styles["form-other-item"]}>
+              <div className={styles["checkbox"]}>
+                <input type="checkbox" id="rememberMeCheckBox" />
+                <label htmlFor="rememberMeCheckBox">Remember Me</label>
+              </div>
+              {/* 
+              ACA TIENE QUE IR UN LINK AL RECUPERO DE PASS */}
+              <p>I Forgot my Password</p>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

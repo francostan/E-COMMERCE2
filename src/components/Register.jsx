@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useInput from "../hooks/useInput";
 import axios from "axios";
 import { useNavigate } from "react-router";
-import NavBar from "./NavBar";
+
 const Register = () => {
   const name = useInput("");
   const lastname = useInput("");
@@ -32,7 +32,6 @@ const Register = () => {
 
   return (
     <div>
-      <NavBar />
       <div>
         <div>
           <div>

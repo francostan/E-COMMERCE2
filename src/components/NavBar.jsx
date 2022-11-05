@@ -2,9 +2,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import { setUser } from "../store/user";
-import { setProducts } from "../store/products";
 import "../Styles/NavBar.css";
 
 const Navbar = () => {
@@ -56,42 +54,42 @@ const Navbar = () => {
         navigate("/");
       })
       .catch((err) => console.error(err));
-
-    navigate("/");
   };
 
   return (
     <div className="navbar">
-      <nav>
-        <div className="logoContainer">
-          <Link to="/home">
-            <label className="logo">DIVINO</label>
-          </Link>
+      <nav className="nav-container">
+        <div className="logo-and-ul">
+          <div className="logo-container">
+            <Link to="/home" className="logo">
+              <h1 className="logo">DIVINO</h1>
+            </Link>
+          </div>
+          <div className="ulContainer">
+            <ul className="ul-li">
+              <li>CATEGORIAS</li>
+              <li>PRODUCTOS</li>
+            </ul>
+          </div>
         </div>
-        <div className="ulContainer">
-          <ul>
-            <li>CATEGORIAS</li>
-            <li>PRODUCTOS</li>
-            <li>
-              {user.name ? (
-                <>
-                  <p>{user.name}</p>
 
-                  <button onClick={handlerLogOut}>Logout</button>
-                </>
-              ) : (
-                <>
-                  {" "}
-                  <Link to="/register">
-                    <button>REGISTER</button>
-                  </Link>
-                  <Link to="/login">
-                    <button>LOGIN</button>
-                  </Link>
-                </>
-              )}{" "}
-            </li>
-          </ul>
+        <div className="name-and-button">
+          {user.name ? (
+            <>
+              <p>{user.name}</p>
+
+              <button onClick={handlerLogOut}>Logout</button>
+            </>
+          ) : (
+            <>
+              <Link to="/register">
+                <button>REGISTER</button>
+              </Link>
+              <Link to="/login">
+                <button>LOGIN</button>
+              </Link>
+            </>
+          )}
         </div>
       </nav>
     </div>
