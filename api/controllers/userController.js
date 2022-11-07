@@ -1,14 +1,18 @@
-const User = require("../models/User");
+const { User, Cart } = require("../models/index");
 const decodeToken = require("../config/token");
 const validateCookie = require("../middlewares/auth");
 
 class userController {
-  static createUser(req, res) {
+  static async createUser(req, res) {
     const { name, lastname, email, password } = req.body;
-
-    User.create({ name, lastname, email, password }).then((user) =>
-      res.status(201).json(user)
-    );
+    try {
+      const user = await User.create({ name, lastname, email, password });
+      const cart = await Cart.create({ userId: user.id });
+      user.cartId = cart.id;
+      res.status(201).json(user);
+    } catch (err) {
+      console.log("error en el proceso", err);
+    }
   }
 
   static findUsers(req, res) {

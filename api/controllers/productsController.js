@@ -1,4 +1,4 @@
-const Products = require("../models/Products");
+const { Products } = require("../models/index");
 // /
 const getAll = (req, res, next) => {
   Products.findAll()
@@ -24,9 +24,9 @@ const getById = (req, res, next) => {
 
 //Post
 const addProducts = (req, res, next) => {
-    Products.create(req.body)
-      .then((producto) => res.status(201).send(producto))
-      .catch((err) => console.log("error", err));
+  Products.create(req.body)
+    .then((producto) => res.status(201).send(producto))
+    .catch((err) => console.log("error", err));
 };
 
 const deleteById = (req, res, next) => {
