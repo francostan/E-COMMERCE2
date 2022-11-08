@@ -26,7 +26,6 @@ const getUserCart = async (req, res, next) => {
 
 const addIntoCart = async (req, res, next) => {
   const { productId, stock, userId } = req.body;
-  // const actualUser = validateCookie(req, res);
 
   const product = await Products.findOne({ where: { id: productId } });
 
