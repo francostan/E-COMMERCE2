@@ -102,7 +102,6 @@ const decreaseCart = async (req, res, next) => {
   await existCart.decrement("stock");
   await product.increment("stock");
 
-  console.log("existCart", existCart);
   if (!existCart.stock) {
     existCart.destroy();
     return res.send([]).status(201);
