@@ -5,6 +5,7 @@ const {
   getUserCart,
   addIntoCart,
   emptyCart,
+  decreaseCart,
 } = require("../controllers/cartController");
 
 //api/carts/:id
@@ -22,5 +23,9 @@ router.post("/add", addIntoCart);
 // api/carts/
 //Vacia el TODO el carrito con el id del usuario logueado
 router.delete("/", emptyCart);
+
+//api/carts/item
+//saca productos del carrito pasandole el id del usuario y del producto
+router.delete("/item", decreaseCart);
 
 module.exports = router;

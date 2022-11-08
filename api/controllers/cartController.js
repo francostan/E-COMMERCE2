@@ -81,4 +81,33 @@ const emptyCart = async (req, res, next) => {
   res.sendStatus(200);
 };
 
-module.exports = { getUserCart, addIntoCart, emptyCart };
+const decreaseCart = async (req, res, next) => {
+  const { userId, productId } = req.body;
+
+  const product = await Products.findOne({ where: { id: productId } });
+
+  //Si el producto no existe
+  if (!product) {
+    console.error("Product not found");
+    return res.sendStatus(400);
+  }
+
+  const existCart = await Cart.findOne({
+    where: {
+      productId,
+      userId,
+    },
+  });
+
+  await existCart.decrement("stock");
+  await product.increment("stock");
+
+  console.log("existCart", existCart);
+  if (!existCart.stock) {
+    existCart.destroy();
+    return res.send([]).status(201);
+  }
+
+  res.send(existCart).status(201);
+};
+module.exports = { getUserCart, addIntoCart, emptyCart, decreaseCart };
