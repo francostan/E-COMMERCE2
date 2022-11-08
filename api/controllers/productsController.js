@@ -1,4 +1,5 @@
 const { Products } = require("../models/index");
+const { User } = require("../models/index");
 // /
 const getAll = (req, res, next) => {
   Products.findAll()
@@ -10,9 +11,9 @@ const getAll = (req, res, next) => {
 
 //:id
 const getById = (req, res, next) => {
-  Products.findOne({
+  Products.findAll({
     where: {
-      id: req.params.id,
+      FavId: req.params.id,
     },
   })
     .then((producto) => {
@@ -24,9 +25,28 @@ const getById = (req, res, next) => {
 
 //Post
 const addProducts = (req, res, next) => {
-  Products.create(req.body)
-    .then((producto) => res.status(201).send(producto))
+  const { name, email, marca, descripcion,bodega, nombre, tipo, precio, valoracion, stock, images} = req.body;
+  User.findOrCreate({
+    where: { name:name, email:email },
+  }).then((user) => {
+    const user1 = user[0];
+    Products.create({
+      marca: marca,
+      descripcion: descripcion,
+      bodega: bodega,
+      nombre: nombre,
+      tipo: tipo,
+      precio: precio,
+      valoracion: valoracion,
+      stock: stock,
+      images: images,
+    })
+    .then((producto) => {
+      producto.setFav(user1);
+      res.status(201).send(producto)})
     .catch((err) => console.log("error", err));
+  });
+  
 };
 
 const deleteById = (req, res, next) => {

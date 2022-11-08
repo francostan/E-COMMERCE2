@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Grid from "./Grid";
-import { fakeData } from "../utils/fakeData";
+import { useDispatch, useSelector } from "react-redux";
+
 
 function Header() {
-  const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    setProducts(fakeData);
-  }, []);
+  //traemos los productos favoritos del store product
+  const products = useSelector((state) => state.products);
+
   return (
     <div>
       <Grid listVinos={products} />

@@ -2,8 +2,10 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { setUser } from "../store/user";
+import { setUser} from "../store/user";
+import {setProducts } from "../store/products";
 import "../Styles/NavBar.css";
+import { fakeData } from "../utils/fakeData";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -27,21 +29,12 @@ const Navbar = () => {
       );
   }, []);
 
-  /*   useEffect(() => {
-    //la idea es que cada vez que cambie el usuario, se traigan los productos
-    //tambien SIEMPRE QUE CARGUE LA NAVBAR, los setea(products) en el store
-    axios
-      .get("api que posee los productos")
-      .then((res) => res.data)
-      .then((products) => {
-        console.log(products);
-        dispatch(setProducts(products));
-      })
-      .catch(() =>
-        console.error("Necesitas loguearte para obtener tu usuario.")
-      );
+  useEffect(() => {
+    dispatch(setProducts(fakeData));
   }, []);
- */
+
+
+
   const handlerLogOut = (e) => {
     axios
       .post("/api/users/logout")

@@ -1,55 +1,43 @@
-import { useDispatch, useSelector } from "react-redux";
-import { setFavorites } from "../store/user";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import Grid from "../commons/Grid";
-import {fakeData} from "../utils/fakeData";
-
+import { useState, useEffect } from "react";
+import {setFavorites} from "../store/favorites";
 
 const Favoritos = () => {
   const dispatch = useDispatch();
 
-  //ahora traemos el usuario logueado con el hook useSelector
   const user = useSelector((state) => state.user);
-  //ingresamos a la propiedad que posee el array de favoritos
-  const favProducts = user.favorites;
-  const products = useSelector((state) => state.products);
-
   console.log(user);
-  console.log(products);
-
- /*  if (favProducts.length === 0) {
+  const handleClick = (e) => {
+    e.preventDefault();
     axios
-      .get(`/api/products/`)
+      .get(`/api/products/${user.id}`)
       .then((res) => res.data)
       .then((products) => {
-        if (products.length > 0) {
-          products.map((product) => {
-            dispatch(setFavorites(product));
-          });
-        }
+        products.map((product) => {
+          dispatch(setFavorites(product));
+        });
       })
       .catch((err) => console.error(err));
-  } */
-  if (favProducts.length === 0){
-  fakeData.map((product)=> {
-    dispatch(setFavorites(product))
-  })}
-  console.log(favProducts);
-  return (
-    <div>
-      <h1>Mis favoritos</h1>
+  }
 
-      {favProducts !== [] ? (
-        <div className="">
-            <div >
-              <Grid listVinos={favProducts}/>
-            </div>
-        </div>
-      ) : (
-        <div>
-          <h4>No tiene favoritos por ahora</h4>
-        </div>
-      )}
+ 
+ 
+  const favorites = useSelector((state) => state.favorites);
+
+  console.log(favorites);
+
+
+  return (
+
+    <div>
+
+      <h1>Mis favoritos</h1>
+      <button onClick={handleClick}>Ver favoritos</button>
+      <div className="">
+        <Grid listVinos={favorites} />
+      </div>
     </div>
   );
 };
