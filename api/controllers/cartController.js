@@ -1,67 +1,128 @@
 const { Products, Cart } = require("../models/index");
+const validateCookie = require("../middlewares/auth");
 
-const getAllCart = async (req, res, next) => {
-  const { id } = req.params;
+const getUserCart = async (req, res, next) => {
+  const actualUser = validateCookie(req, res);
+
+  //Si no esta logueado no puede traer el carrito del usuario
+
+  if (!actualUser.id) {
+    return next();
+  }
   try {
-    const cart = await Cart.findOne({
+    const userCart = await Cart.findAll({
       where: {
-        id,
+        userId: actualUser.id,
       },
+      include: [Products],
     });
-    const cartProducts = await cart.getProducts();
-    res.send(cartProducts).status(200);
+
+    res.send(userCart).status(200);
   } catch (err) {
-    console.log("error en el proceso", err);
-    next(err);
+    res.send([]).status(404);
+    console.error("Problem with cart", err);
   }
 };
 
 const addIntoCart = async (req, res, next) => {
-  const { user, producto } = req.body;
+  const { productId, stock, userId } = req.body;
 
-  try {
-    const cart = await Cart.findOne({
-      where: {
-        id: user.id,
-      },
-    });
+  const product = await Products.findOne({ where: { id: productId } });
 
-    const product = await Products.findOne({
-      where: {
-        id: producto.id,
-      },
-    });
-
-    await cart.addProduct(product);
-
-    const cartProducts = await cart.getProducts();
-
-    res.send(cartProducts).status(200);
-  } catch (err) {
-    console.log("error", err);
-    next(err);
+  //Tengo que mandar si o si el stock que quiero updatear
+  if (!stock) {
+    console.error("Tiene que recibir stock desde el body");
+    return res.sendStatus(400);
   }
+  //Verifico si el producto no existe
+  if (!product) {
+    console.error("Product not found");
+    return res.sendStatus(400);
+  }
+  //verifico si hay stock del producto
+  if (!product.stock) {
+    console.error("Product sin stock");
+    return res.sendStatus(400);
+  }
+
+  if (stock > product.stock) {
+    console.error("No se puede comprar mas de lo que hay en stock");
+    return res.sendStatus(400);
+  }
+
+  //Checkeo si el producto ya esta en el carrito
+  const existCart = await Cart.findOne({
+    where: {
+      productId,
+      userId,
+    },
+  });
+
+  //Si el producto ya estaba en el carrito al stock, salvo que no tenga mas stock
+  if (existCart) {
+    for (let i = 0; i < stock; i++) {
+      await existCart.increment("stock");
+      await product.decrement("stock");
+    }
+
+    return res.send(existCart).status(201);
+  }
+
+  const cart = await Cart.create({
+    productId,
+    userId,
+  });
+
+  for (let i = 0; i < stock; i++) {
+    await cart.increment("stock");
+    await product.decrement("stock");
+  }
+  res.send(cart).status(201);
 };
 
 const emptyCart = async (req, res, next) => {
-  const { id } = req.params;
+  const actualUser = validateCookie(req, res);
 
+  //Si no esta logueado no puede traer el carrito del usuario
+
+  if (!actualUser.id) {
+    return next();
+  }
   try {
-    const cart = await Cart.findOne({
-      where: {
-        id,
-      },
-    });
+    await Cart.destroy({ where: { userId: actualUser.id } });
 
-    let cartProducts = await cart.getProducts();
-    await cart.removeProducts(cartProducts);
-    cartProducts = await cart.getProducts();
-
-    res.send(cartProducts).status(204);
+    res.sendStatus(200);
   } catch (err) {
-    console.log("error", err);
-    next(err);
+    console.error(err);
   }
 };
 
-module.exports = { getAllCart, addIntoCart, emptyCart };
+const decreaseCart = async (req, res, next) => {
+  const { userId, productId } = req.body;
+
+  const product = await Products.findOne({ where: { id: productId } });
+
+  //Si el producto no existe
+  if (!product) {
+    console.error("Product not found");
+    return res.sendStatus(400);
+  }
+
+  const existCart = await Cart.findOne({
+    where: {
+      productId,
+      userId,
+    },
+  });
+
+  await existCart.decrement("stock");
+  await product.increment("stock");
+
+  if (!existCart.stock) {
+    existCart.destroy();
+    return res.send([]).status(201);
+  }
+
+  res.send(existCart).status(201);
+};
+module.exports = { getUserCart, addIntoCart, emptyCart, decreaseCart };

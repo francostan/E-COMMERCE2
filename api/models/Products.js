@@ -35,7 +35,7 @@ Products.init(
     },
     stock: {
       type: S.INTEGER,
-      defaultValue: 0,
+      defaultValue: 1,
     },
     images: {
       type: S.STRING,

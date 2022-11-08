@@ -3,11 +3,12 @@ const Products = require("./Products");
 const Cart = require("./Cart");
 
 //One-To-One Cart-User//
-Cart.hasOne(User);
+
 User.hasOne(Cart);
 
 //one to many //
-Cart.belongsToMany(Products, { through: "Cart_Productos" });
+Cart.belongsTo(Products);
+Cart.belongsTo(User);
 
 Products.belongsTo(User, { as: "Fav" });
 
