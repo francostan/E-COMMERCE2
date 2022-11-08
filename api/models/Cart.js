@@ -6,7 +6,7 @@ Cart.init(
   {
     stock: {
       type: S.INTEGER,
-      defaultValue: 1,
+      defaultValue: 0,
     },
   },
   { sequelize: db, modelName: "carts" }

@@ -30,9 +30,24 @@ const addIntoCart = async (req, res, next) => {
 
   const product = await Products.findOne({ where: { id: productId } });
 
-  //Si el producto no existe
+  //Tengo que mandar si o si el stock que quiero updatear
+  if (!stock) {
+    console.error("Tiene que recibir stock desde el body");
+    return res.sendStatus(400);
+  }
+  //Verifico si el producto no existe
   if (!product) {
     console.error("Product not found");
+    return res.sendStatus(400);
+  }
+  //verifico si hay stock del producto
+  if (!product.stock) {
+    console.error("Product sin stock");
+    return res.sendStatus(400);
+  }
+
+  if (stock > product.stock) {
+    console.error("No se puede comprar mas de lo que hay en stock");
     return res.sendStatus(400);
   }
 
@@ -44,16 +59,12 @@ const addIntoCart = async (req, res, next) => {
     },
   });
 
-  //Si el producto ya estaba en el carrito le suma 1 al stock, salvo que no tenga mas stock
+  //Si el producto ya estaba en el carrito al stock, salvo que no tenga mas stock
   if (existCart) {
-    const realStock = product.stock;
-    if (!realStock)
-      return res
-        .send({ mensaje: "no hay mas stock del producto", product })
-        .status(200);
-
-    await existCart.increment("stock");
-    await product.decrement("stock");
+    for (let i = 0; i < stock; i++) {
+      await existCart.increment("stock");
+      await product.decrement("stock");
+    }
 
     return res.send(existCart).status(201);
   }
@@ -61,9 +72,12 @@ const addIntoCart = async (req, res, next) => {
   const cart = await Cart.create({
     productId,
     userId,
-    stock,
   });
-  await product.decrement("stock");
+
+  for (let i = 0; i < stock; i++) {
+    await cart.increment("stock");
+    await product.decrement("stock");
+  }
   res.send(cart).status(201);
 };
 
@@ -75,10 +89,13 @@ const emptyCart = async (req, res, next) => {
   if (!actualUser.id) {
     return next();
   }
+  try {
+    await Cart.destroy({ where: { userId: actualUser.id } });
 
-  await Cart.destroy({ where: { userId: actualUser.id } });
-
-  res.sendStatus(200);
+    res.sendStatus(200);
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 const decreaseCart = async (req, res, next) => {
