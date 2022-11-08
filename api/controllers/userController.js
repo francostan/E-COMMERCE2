@@ -7,8 +7,7 @@ class userController {
     const { name, lastname, email, password } = req.body;
     try {
       const user = await User.create({ name, lastname, email, password });
-      const cart = await Cart.create({ userId: user.id });
-      user.cartId = cart.id;
+
       res.status(201).json(user);
     } catch (err) {
       console.log("error en el proceso", err);
