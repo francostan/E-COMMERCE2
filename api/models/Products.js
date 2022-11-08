@@ -7,27 +7,27 @@ Products.init(
   {
     marca: {
       type: S.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     descripcion: {
-      type: S.STRING,
-      allowNull: false,
+      type: S.STRING(1000),
+      allowNull: true,
     },
     bodega: {
       type: S.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     nombre: {
       type: S.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     tipo: {
       type: S.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     precio: {
       type: S.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     valoracion: {
       type: S.INTEGER,
@@ -37,6 +37,9 @@ Products.init(
       type: S.INTEGER,
       defaultValue: 0,
     },
+    images: {
+      type: S.STRING,
+    }
   },
   { sequelize: db, modelName: "products" }
 );

@@ -5,9 +5,9 @@ export const setProducts = createAction("SET_PRODUCTS");
 
 const initialState = [];
 
-const moviesReducer = createReducer(initialState, {
+const productReducer = createReducer(initialState, {
     [setProducts]: (state, action) => action.payload,
     
 });
 
-export default moviesReducer;
+export default productReducer;

@@ -9,6 +9,6 @@ User.hasOne(Cart);
 //one to many //
 Cart.belongsToMany(Products, { through: "Cart_Productos" });
 
-Products.belongsTo(User, { as: "fav" });
+Products.belongsTo(User, { as: "Fav" });
 
 module.exports = { User, Products, Cart };
