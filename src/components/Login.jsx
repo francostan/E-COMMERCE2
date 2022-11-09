@@ -3,8 +3,11 @@ import useInput from "../hooks/useInput";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import styles from "../Styles/Login.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../store/user";
 
 export const Login = () => {
+  const dispatch = useDispatch();
   const email = useInput("");
   const password = useInput("");
   const navigate = useNavigate();
@@ -18,6 +21,7 @@ export const Login = () => {
       })
       .then((res) => res.data)
       .then((user) => {
+        dispatch(setUser(user));
         alert(
           `Bienvenido ${user.name}!, recargue la pagina para ver los cambios`
         );

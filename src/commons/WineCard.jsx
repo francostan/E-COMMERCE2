@@ -11,51 +11,51 @@ import axios from "axios";
 export default function WineCard({ vino }) {
   //hacemos un estado local para guardar los favoritos
 
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
+  // const dispatch = useDispatch();
+  // const user = useSelector((state) => state.user);
 
-  const handleClickFav = (e) => {
-    //traemos name y email del user para que encuentre primero al usuario
-    const { name, email } = user;
-    //traemos los datos necesarios para agregar ese vino a la tabla ProductUser
-    const {
-      marca,
-      descripcion,
-      bodega,
-      nombre,
-      tipo,
-      precio,
-      valoracion,
-      stock,
-      images,
-    } = vino;
-    //hacemos post con los datos necesarios por el req.body
-    axios
-      .post("api/products/add", {
-        name,
-        email,
-        marca,
-        descripcion,
-        bodega,
-        nombre,
-        tipo,
-        precio,
-        valoracion,
-        stock,
-        images: images[0].url,
-      })
-      .then((res) => res.data)
-      .then((producto) => {
-        console.log(producto);
-        //y despachamos para que se agregue al store
-        alert("Producto agregado a favoritos");
-      })
-      .catch((err) => console.error(err));
-  };
+  // const handleClickFav = (e) => {
+  //   //traemos name y email del user para que encuentre primero al usuario
+  //   const { name, email } = user;
+  //   //traemos los datos necesarios para agregar ese vino a la tabla ProductUser
+  //   const {
+  //     marca,
+  //     descripcion,
+  //     bodega,
+  //     nombre,
+  //     tipo,
+  //     precio,
+  //     valoracion,
+  //     stock,
+  //     images,
+  //   } = vino;
+  //   //hacemos post con los datos necesarios por el req.body
+  //   axios
+  //     .post("api/products/add", {
+  //       name,
+  //       email,
+  //       marca,
+  //       descripcion,
+  //       bodega,
+  //       nombre,
+  //       tipo,
+  //       precio,
+  //       valoracion,
+  //       stock,
+  //       images: images[0].url,
+  //     })
+  //     .then((res) => res.data)
+  //     .then((producto) => {
+  //       console.log(producto);
+  //       //y despachamos para que se agregue al store
+  //       alert("Producto agregado a favoritos");
+  //     })
+  //     .catch((err) => console.error(err));
+  // };
 
-  const handleClickCart = (e) => {};
+  // const handleClickCart = (e) => {};
 
-  console.log(vino);
+  // console.log(vino);
 
   return (
     <>
