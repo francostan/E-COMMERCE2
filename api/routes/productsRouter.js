@@ -6,6 +6,7 @@ const {
   getById,
   deleteById,
   addProducts,
+  addAll,
 } = require("../controllers/productsController");
 
 // find all api/products
@@ -19,6 +20,9 @@ router.get("/:id", getById);
 // api/products/add
 //Ya testeado
 router.post("/add", addProducts);
+
+///api/products/addAll
+router.post("/addAll", addAll);
 
 router.put("/:id", (req, res, next) => {
   console.log(
