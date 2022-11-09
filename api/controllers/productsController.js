@@ -1,4 +1,5 @@
 const { Products } = require("../models/index");
+const { fakeData } = require("../../src/utils/fakeData");
 // /
 const getAll = (req, res, next) => {
   Products.findAll()
@@ -22,6 +23,14 @@ const getById = (req, res, next) => {
     .catch(next);
 };
 
+//Addall products at once. Dev mode not for production
+
+const addAll = async (req, res, next) => {
+  await Products.sync({ force: true });
+  await Products.bulkCreate(fakeData);
+  res.sendStatus(200);
+};
+
 //Post
 const addProducts = (req, res, next) => {
   Products.create(req.body)
@@ -41,4 +50,4 @@ const deleteById = (req, res, next) => {
     });
 };
 
-module.exports = { getAll, getById, deleteById, addProducts };
+module.exports = { getAll, getById, deleteById, addProducts, addAll };
