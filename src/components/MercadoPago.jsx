@@ -1,0 +1,50 @@
+import React, { useEffect, useState } from 'react';
+import { useParams } from "react-router-dom";
+import axios from "axios";
+
+const FORM_ID = 'payment-form';
+
+export default function Product() {
+  /* const { id } = useParams(); // id de producto */
+  const [preferenceId, setPreferenceId] = useState(null);
+
+/*   useEffect(() => {
+    // luego de montarse el componente, le pedimos al backend el preferenceId
+    
+  }, []); */
+
+  const handleClick = () => {
+    axios.post('/api/pay/payment',  [{
+      "id": 1,
+      "name": "rico",
+      "image": "https://www.adslzone.net/app/uploads-adslzone.net/2019/04/borrar-fondo-imagen.jpg",
+      "description": "hola",
+      "quantity": 1,
+      "price": 1200
+  }] )
+  .then((order) => {
+    console.log(order.data)
+    setPreferenceId(order.data);
+  });
+  }
+
+  useEffect(() => {
+    if (preferenceId) {
+      //https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=1235586667-39b84923-93a5-40fb-b3f6-4f1724563329
+      // con el preferenceId en mano, inyectamos el script de mercadoPago
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";;
+      script.setAttribute('data-preference-id', preferenceId.id);
+      const form = document.getElementById(FORM_ID);
+      form.appendChild(script);
+    }
+  }, [preferenceId]);
+
+  return (
+    <div>
+    <button onClick={handleClick}>Solicitar pago</button>
+    <form id={FORM_ID} method="GET" />
+    </div>
+  );
+}

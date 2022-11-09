@@ -7,10 +7,13 @@ const db = require("./config/db");
 const PORT = 3001;
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const dotenv = require("dotenv");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+
+dotenv.config();
 
 app.use(morgan("tiny"));
 
