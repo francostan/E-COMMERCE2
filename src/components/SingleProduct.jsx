@@ -7,6 +7,7 @@ import { fakeData } from "../utils/fakeData";
 
 const SingleProduct = () => {
   const { id } = useParams();
+  const [producto, setProducto] = useState({});
 
   const [count, setCount] = useState(1);
 
@@ -34,13 +35,15 @@ const SingleProduct = () => {
 
 return null; */
 
-  const producto = fakeData[id - 1];
+  useEffect(() => {
+    axios.get(`/api/products/${id}`).then((data) => setProducto(data.data));
+  }, []);
 
   return (
     <div className={styles.container} key={id}>
       <div className={styles.imgContainer}>
         <div className={styles.img}>
-          <img src={producto.images[0].url} alt={`${producto.title}`} />
+          <img src={producto.images} alt={`${producto.title}`} />
         </div>
       </div>
       <div className={styles.productDetails}>
