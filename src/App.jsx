@@ -7,8 +7,6 @@ import Home from "./components/Home";
 import Favoritos from "./components/Favoritos";
 import { Navigate } from "react-router-dom";
 import "./Styles/Global.css";
-import "./Styles/reset.css";
-import SingleProduct from "./components/SingleProduct";
 import Carrito from "./components/Carrito";
 import ProductDetails from "./components/ProductDetails";
 
