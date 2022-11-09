@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "./store/user";
+import MercadoPago from "./components/MercadoPago";
 //Consultar a fran el dispatch del user, para el ternario de las rutas cuando exista user
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
         ) : (
           <>
             <Route path={`/favoritos/${user.id}`} element={<Favoritos />} />
+            <Route path="/pay" element={<MercadoPago />} />
           </>
         )}
         <Route path="/products/:id" element={<ProductDetails />} />
