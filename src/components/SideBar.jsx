@@ -23,7 +23,7 @@ function SideBar() {
               <Link className={styles.linkSide} to="/">
                 <div>Carrito</div>
               </Link>
-              <Link className={styles.linkSide} to="/favoritos">
+              <Link className={styles.linkSide} to={`/favoritos/${user.id}`}>
                 <div>Favoritos</div>
               </Link>
               <Link className={styles.linkSide} to="/">

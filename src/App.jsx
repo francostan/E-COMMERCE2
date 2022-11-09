@@ -44,7 +44,7 @@ function App() {
           </>
         ) : (
           <>
-            <Route path={`/favoritos`} element={<Favoritos />} />
+            <Route path={`/favoritos/${user.id}`} element={<Favoritos />} />
           </>
         )}
 

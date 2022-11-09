@@ -14,6 +14,6 @@ router.post("/verify", verify);
 
 router.post("/add", add);
 
-router.delete("/delete", borrar);
+router.put("/delete", borrar);
 
 module.exports = router;

@@ -4,12 +4,15 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import { Provider } from "react-redux";
 import store from "./store";
+import { FavoritesContextProvider } from "./context/FavoritesContext.js";
 
 const app = (
   <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <FavoritesContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </FavoritesContextProvider>
   </Provider>
 );
 
