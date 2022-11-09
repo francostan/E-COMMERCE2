@@ -9,6 +9,8 @@ import { Navigate } from "react-router-dom";
 import "./Styles/Global.css";
 import "./Styles/reset.css";
 import SingleProduct from "./components/SingleProduct";
+import Carrito from "./components/Carrito";
+import ProductDetails from "./components/ProductDetails";
 
 //Consultar a fran el dispatch del user, para el ternario de las rutas cuando exista user
 
@@ -23,7 +25,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/favoritos" element={<Favoritos />} />
-        <Route path="/products/:id" element={<SingleProduct />} />
+        <Route path="/products/:id" element={<ProductDetails />} />
+        <Route path="/cart/:id" element={<Carrito />} />
       </Routes>
     </div>
   );

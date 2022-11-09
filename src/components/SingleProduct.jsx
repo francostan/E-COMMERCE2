@@ -1,24 +1,25 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { Link } from "react-router-dom";
 import styles from "../Styles/SingleProduct.module.css";
-import { fakeData } from "../utils/fakeData";
 
-const SingleProduct = () => {
-  const { id } = useParams();
-  const [producto, setProducto] = useState({});
+const SingleProduct = ({ product }) => {
+  const { id, nombre, images, bodega, descripcion, variedad, precio, stock } =
+    product;
+
+  const stockValue = stock;
 
   const [count, setCount] = useState(1);
+  const [stockVal, setStockVal] = useState(stockValue);
 
   const increase = () => {
     setCount(count + 1);
+    setStockVal(stockVal - 1);
   };
-
   const decrease = () => {
     setCount(count - 1);
+    setStockVal(stockVal + 1);
   };
 
+  console.log(stockVal);
   /*   const [product, setProduct] = useState({});
 
   useEffect(() => {
@@ -35,27 +36,26 @@ const SingleProduct = () => {
 
 return null; */
 
-  useEffect(() => {
-    axios.get(`/api/products/${id}`).then((data) => setProducto(data.data));
-  }, []);
-
   return (
     <div className={styles.container} key={id}>
       <div className={styles.imgContainer}>
         <div className={styles.img}>
-          <img src={producto.images} alt={`${producto.title}`} />
+          <img src={images} alt={`${nombre}`} />
         </div>
       </div>
       <div className={styles.productDetails}>
-        <div className={styles.bodega}>{producto.bodega}</div>
-        <div className={styles.title}>{producto.nombre}</div>
-        <div className={styles.cepa}>{producto.cepa}</div>
+        <div className={styles.bodega}>{bodega}</div>
+        <div className={styles.title}>{nombre}</div>
+        <div className={styles.cepa}>{variedad}</div>
         <div className={styles.descriptionContainer}>
-          <p className={styles.descriptionContent}>{producto.descripcion}</p>
+          <p className={styles.descriptionContent}>{descripcion}</p>
         </div>
         <div className={styles.priceContainer}>
-          <span className={styles.precio}>${producto.precio}</span>
-          <span className={styles.stock}>En Stock</span>
+          <span className={styles.precio}>${precio}</span>
+          <div>
+            <p className={styles.stock}>En Stock</p>
+            <p className={styles.stock}>{stockVal}uds.</p>
+          </div>
         </div>
         <div className={styles.qty}>
           <span style={{ fontWeight: "800", paddingLeft: "2rem" }}>
