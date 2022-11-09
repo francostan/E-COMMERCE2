@@ -44,7 +44,7 @@ const borrar = async (req, res) => {
 
   const borrar = await Favoritos.destroy({ where: { userId, productId } });
 
-  if (borrar === 0) return res.status(202).send(false);
+  if (!borrar) return res.status(202).send(false);
 
   res.status(202).send(true);
 };
