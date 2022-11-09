@@ -7,7 +7,7 @@ import Favoritos from "./components/Favoritos";
 import { Navigate } from "react-router-dom";
 import "./Styles/Global.css";
 import "./Styles/reset.css";
-import SingleProduct from "./components/SingleProduct";
+import ProductDetails from "../src/components/ProductDetails";
 import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -47,8 +47,7 @@ function App() {
             <Route path={`/favoritos`} element={<Favoritos />} />
           </>
         )}
-
-        <Route path="/products/:id" element={<SingleProduct />} />
+        <Route path="/products/:id" element={<ProductDetails />} />
       </Routes>
     </div>
   );
