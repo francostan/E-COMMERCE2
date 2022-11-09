@@ -47,7 +47,6 @@ function App() {
             <Route path={`/favoritos`} element={<Favoritos />} />
           </>
         )}
-
         <Route path="/products/:id" element={<ProductDetails />} />
       </Routes>
     </div>
