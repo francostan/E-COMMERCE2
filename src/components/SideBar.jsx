@@ -34,9 +34,11 @@ function SideBar() {
               </Link>
             </>
           ) : (
-            <a className={styles.needToLog} href="#">
-              Necesitas estar logueado para ver opciones
-            </a>
+            <Link className={styles.linkSide} to="/login">
+              <a className={styles.needToLog}>
+                Necesitas estar logueado para ver opciones
+              </a>
+            </Link>
           )}
         </nav>
       </div>
