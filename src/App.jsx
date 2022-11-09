@@ -34,6 +34,7 @@ function App() {
     <div>
       <Navbar />
       <Routes>
+        <Route path="/*" element={<Home />} />
         <Route path="/" element={<Navigate to={"/home"} />} />
         <Route path="/home" element={<Home />} />
         {!user.id ? (
