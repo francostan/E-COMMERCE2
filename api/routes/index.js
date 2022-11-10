@@ -6,6 +6,9 @@ const cartRouter = require("./cartRouter");
 const favoritosRouter = require("./favoritosRouter");
 const payRouter = require("./payRouter");
 const categoryRouter = require("./categoryRouter");
+const orderDetailsRouter = require("./orderDetailsRouter");
+const orderItemsRouter = require("./orderItemsRouter");
+
 //centralizamos las rutas de products y users
 router.use("/users", userRouter);
 router.use("/products", productsRouter);
@@ -13,4 +16,8 @@ router.use("/carts", cartRouter);
 router.use("/favoritos", favoritosRouter);
 router.use("/pay", payRouter);
 router.use("/category", categoryRouter);
+
+router.use("/orderDetail", orderDetailsRouter);
+router.use("/orderItems", orderItemsRouter);
+
 module.exports = router;
