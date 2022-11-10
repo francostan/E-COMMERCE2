@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "./store/user";
+import Cart from "./components/Cart";
 //Consultar a fran el dispatch del user, para el ternario de las rutas cuando exista user
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
           </>
         )}
         <Route path="/products/:id" element={<ProductDetails />} />
+        <Route path="/carts/:id" element={<Cart />} />
       </Routes>
     </div>
   );
