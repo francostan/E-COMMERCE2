@@ -13,6 +13,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "./store/user";
 import MercadoPago from "./components/MercadoPago";
+import Category from "./components/Category";
 //Consultar a fran el dispatch del user, para el ternario de las rutas cuando exista user
 
 function App() {
@@ -38,10 +39,12 @@ function App() {
         <Route path="/*" element={<Home />} />
         <Route path="/" element={<Navigate to={"/home"} />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/category" element={<Category />} />
         {!user.id ? (
           <>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            
           </>
         ) : (
           <>

@@ -48,3 +48,11 @@ label {
   align-items: center;
   flex-wrap: wrap;
 }
+
+.linkSide {
+  text-decoration: none;
+}
+
+.linkSide:visited {
+  color: white;
+}
