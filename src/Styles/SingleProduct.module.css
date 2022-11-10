@@ -1,77 +1,98 @@
+@media (max-width: 950px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    margin-top: 3rem;
+    width: 80vw;
+    border: 5px solid black;
+    border-radius: 50px 50px 0px 0px;
+    background-color: #fff;
+    justify-content: space-between;
+  }
+  .productDetails {
+    border: 3px solid green;
+    flex-direction: column;
+    align-content: center;
+    background-color: #3b1c32fa;
+    border-radius: 0px 45px 45px 0px;
+    border-bottom: none;
+    width: 100%;
+  }
+
+  .title {
+    border: 3px solid red;
+    width: 50%;
+    font-size: 0.75rem;
+    color: #f6f8fa;
+    text-transform: uppercase;
+  }
+}
+
 body {
   background-color: #fff;
 }
 .container {
   display: flex;
-  flex-wrap: wrap;
   margin: 0 auto;
   margin-top: 3rem;
   width: 80vw;
-  height: 80vh;
-  border: solid 3px black;
+  height: auto;
+  border: solid 4px black;
   border-radius: 50px;
   background-color: #fff;
   justify-content: space-between;
 }
-.imgContainer {
+.imgBox {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  width: 50vw;
+  margin: 0 auto;
+  width: 40vw;
   padding: 10px;
 }
-.img {
-  max-width: 450px;
+.imgCont {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.imgCont img {
+  display: block;
+  width: 80%;
+  max-width: 300px; /*actual image width*/
+  height: auto; /* maintain aspect ratio*/
+  margin: auto; /*optional centering of image*/
 }
 
 .productDetails {
   display: flex;
   flex-direction: column;
   align-content: center;
-  background-color: #3b1c32;
-  border-radius: 0px 44px 44px 0px;
+  background-color: #3b1c32fa;
+  border-radius: 0px 45px 45px 0px;
   border-bottom: none;
+  width: 30vw;
 }
 
-@media (max-width: 950px) {
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
-    margin-top: 3rem;
-    width: 80vw;
-    height: 80vh;
-    border: 5px solid black;
-    border-radius: 50px 50px 0px 0px;
-    background-color: #fff;
-    justify-content: space-between;
-  }
+.title {
+  padding-left: 1.25rem;
+  font-size: 0.75rem;
+  color: #f6f8fa;
+  text-transform: uppercase;
+}
 
-  .productDetails {
-    border-radius: 0px 0px 44px 44px;
-    width: 100%;
-  }
-  .title {
-    padding-left: 1.25rem;
-    font-size: 0.75rem;
-    color: #f6f8fa;
-    text-align: start;
-    text-transform: uppercase;
-  }
-
-  .descriptionContainer {
-    display: flex;
-    width: 100vw;
-    /*  border: 3px solid red; */
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    font-style: italic;
-    color: #f6f8fa;
-    font-size: 0.5rem;
-    text-align: justify;
-    text-justify: inherit;
-  }
+.descriptionContainer {
+  display: flex;
+  width: 100vw;
+  /*  border: 3px solid red; */
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-style: italic;
+  color: #f6f8fa;
+  font-size: 0.5rem;
+  text-align: justify;
+  text-justify: inherit;
 }
 
 .bodega {
@@ -143,7 +164,7 @@ body {
 
 .input {
   max-width: 3rem;
-  min-height: 2.25rem;
+  height: 1.75rem;
   font-size: 15px;
   text-align: center;
   border-radius: 5px;
@@ -153,12 +174,26 @@ body {
 .button {
   margin-right: 3px;
   margin-left: 3px;
-  padding-right: 1rem;
   cursor: pointer;
-  max-height: 2rem;
+  border-radius: 5px;
+  height: 1.25rem;
   font-size: 0.75rem;
   text-align: center;
   align-self: center;
+}
+
+.button:hover {
+  background-color: #3b1c32;
+  border: 2px groove white;
+  color: white;
+  transform: scale(0.8);
+  -webkit-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  transition: 150ms ease-in-out;
+}
+
+.inputButtons {
+  display: flex;
 }
 
 .comprar {
