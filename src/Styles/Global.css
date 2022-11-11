@@ -1,4 +1,7 @@
 @import url("https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css");
+* {
+  text-decoration: none;
+}
 body {
   margin: 0;
   padding: 0;

@@ -19,7 +19,6 @@ function CheckOut() {
   return (
     <div className="container">
       <h1>Mis compras:</h1>
-
       {tickets.map((ticket) => {
         return <ShowOrderDetails tickets={ticket} />;
       })}

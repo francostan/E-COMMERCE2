@@ -1,4 +1,8 @@
 .container {
+  display: grid;
+
+  height: 100vh;
+  justify-content: center;
   text-align: center;
 }
 
@@ -6,17 +10,24 @@ title {
 }
 
 .card {
-  background: rgb(112, 28, 250);
-  background: linear-gradient(
-    90deg,
-    rgba(112, 28, 250, 1) 42%,
-    rgba(50, 110, 255, 1) 100%
-  );
+  margin-bottom: 3rem;
+  background-color: #3b1c32;
+  height: 33vh;
+  width: 40vw;
   box-sizing: border-box;
   font-size: 20px;
-  display: flex;
-  justify-content: center;
   margin-top: 1rem;
-  max-width: 100vw;
-  color: white;
+  color: #c89933;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.details {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.details:hover {
+  color: rgb(179, 179, 179);
 }

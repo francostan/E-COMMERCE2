@@ -10,7 +10,7 @@ function ShowOrderDetails({ tickets }) {
 
         <h2> Precio total: ${tickets.total}</h2>
         <Link to={`/misCompras/${tickets.id}`}>
-          <p role={"button"}>DETALLES</p>
+          <p className="details">DETALLES</p>
         </Link>
       </div>
     </>
