@@ -16,6 +16,7 @@ import MercadoPago from "./components/MercadoPago";
 import Category from "./components/Category";
 import CheckOut from "./components/CheckOut";
 import OrderItem from "./commons/OrderItem";
+import Success from "./components/Success";
 //Consultar a fran el dispatch del user, para el ternario de las rutas cuando exista user
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
             <Route path="/pay" element={<MercadoPago />} />
             <Route path="/misCompras" element={<CheckOut />} />
             <Route path="/misCompras/:id" element={<OrderItem />} />
+            <Route path="/success" element={<Success />} />
           </>
         )}
         <Route path="/products/:id" element={<ProductDetails />} />
