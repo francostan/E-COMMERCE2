@@ -13,6 +13,10 @@ Products.init(
       type: S.STRING(1000),
       allowNull: true,
     },
+    variedad: {
+      type: S.STRING,
+      allowNull: true,
+    },
     bodega: {
       type: S.STRING,
       allowNull: true,
@@ -39,7 +43,7 @@ Products.init(
     },
     images: {
       type: S.STRING,
-    }
+    },
   },
   { sequelize: db, modelName: "products" }
 );

@@ -1,0 +1,72 @@
+section {
+  display: flex;
+  text-align: center;
+  width: 80vw;
+  margin: 0 auto;
+}
+thead {
+  border-bottom: 1px solid grey;
+  font-size: 1rem;
+}
+
+.container1 {
+  margin: 0 auto;
+}
+
+.container1 h1 {
+  font-size: 2.25rem;
+}
+
+.container2 {
+  width: 60vw;
+  margin: 0 auto;
+}
+
+.input {
+  border: solid 3px #2a264f;
+  width: 25px;
+  height: 2em;
+  text-align: center;
+  font-size: 0.75em;
+  margin-right: 2px;
+  margin-left: 2px;
+  border-radius: 5px;
+}
+
+.button {
+  border: solid 3px #2a264f;
+  width: 25px;
+  height: 20px;
+  font-size: 0.705em;
+  font-weight: 800;
+  color: #2a264f;
+  background-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #2a264f;
+  color: white;
+}
+
+table {
+  width: 100%;
+}
+
+.tableContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttonShop {
+  display: flex;
+  justify-content: end;
+  gap: 2rem;
+}
+
+.precio {
+  width: 15%;
+}
