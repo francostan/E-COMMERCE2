@@ -1,0 +1,11 @@
+.adminIcons {
+  font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 200, "opsz" 48;
+  font-size: 10em;
+}
+
+.deleteContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}

@@ -26,18 +26,24 @@ function SideBar() {
               <Link className={styles.linkSide} to={`/favoritos/${user.id}`}>
                 <div>Favoritos</div>
               </Link>
-              <Link className={styles.linkSide} to="/">
+              <Link className={styles.linkSide} to="/misCompras">
                 <div>Mis compras</div>
               </Link>
               <Link className={styles.linkSide} to="/">
                 <div>Ayuda</div>
               </Link>
+              {user.isAdmin ? (
+                <Link className={styles.linkSide} to="/admin">
+                  <div>Admin</div>
+                </Link>
+              ) : null}
             </>
           ) : (
             <Link className={styles.linkSide} to="/login">
-              <a className={styles.needToLog}>
+              <div className={styles.needToLog}>
                 Necesitas estar logueado para ver opciones
-              </a>
+              </div>
+              <di>Click Para Ingresar</di>
             </Link>
           )}
         </nav>

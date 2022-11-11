@@ -7,11 +7,11 @@ Products.init(
   {
     marca: {
       type: S.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     descripcion: {
       type: S.STRING(1000),
-      allowNull: true,
+      allowNull: false,
     },
     variedad: {
       type: S.STRING,
@@ -19,11 +19,11 @@ Products.init(
     },
     bodega: {
       type: S.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     nombre: {
       type: S.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     tipo: {
       type: S.STRING,
@@ -31,7 +31,7 @@ Products.init(
     },
     precio: {
       type: S.INTEGER,
-      allowNull: true,
+      allowNull: false,
     },
     valoracion: {
       type: S.INTEGER,

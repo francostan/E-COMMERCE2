@@ -7,6 +7,7 @@ import { setProducts } from "../store/products";
 import "../Styles/NavBar.css";
 import { fakeData } from "../utils/fakeData";
 
+
 const Navbar = () => {
   const navigate = useNavigate();
   //le avisamos al store que hay un nuevo usuario logueado
@@ -60,7 +61,9 @@ const Navbar = () => {
           </div>
           <div className="ulContainer">
             <ul className="ul-li">
+              <Link to="/category" className="linkSide" >
               <li>CATEGORIAS</li>
+              </Link>
               <li>PRODUCTOS</li>
             </ul>
           </div>
