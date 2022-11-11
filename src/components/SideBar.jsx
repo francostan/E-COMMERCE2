@@ -20,7 +20,7 @@ function SideBar() {
           </label>
           {user.email ? (
             <>
-              <Link className={styles.linkSide} to="/">
+              <Link className={styles.linkSide} to="/carts">
                 <div>Carrito</div>
               </Link>
               <Link className={styles.linkSide} to={`/favoritos/${user.id}`}>
@@ -29,9 +29,7 @@ function SideBar() {
               <Link className={styles.linkSide} to="/misCompras">
                 <div>Mis compras</div>
               </Link>
-              <Link className={styles.linkSide} to="/">
-                <div>Ayuda</div>
-              </Link>
+
               {user.isAdmin ? (
                 <Link className={styles.linkSide} to="/admin">
                   <div>Admin</div>

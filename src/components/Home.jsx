@@ -6,7 +6,6 @@ import styles from "../Styles/Home.module.css";
 function Home() {
   return (
     <div>
-      <SideBar />
       <div className={styles.space}></div>
       <Header className={styles.header} />
     </div>

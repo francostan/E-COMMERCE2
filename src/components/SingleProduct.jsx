@@ -13,8 +13,6 @@ const SingleProduct = ({ product }) => {
   const [stockVal, setStockVal] = useState(null);
   const navigate = useNavigate();
 
-  console.log(product);
-
   const value = useRef(null);
 
   if (!value.current)
@@ -36,9 +34,15 @@ const SingleProduct = ({ product }) => {
   const handleClick = (e) => {
     e.preventDefault();
     axios
-      .post("/api/carts/add", { userId: user.id, productId: id, stock: count })
-      .then((result) => console.log("PRODUCTO AGREGADO", result))
-      .catch((err) => console.log("error", err));
+      .post("/api/carts/add", {
+        userId: user.id,
+        productId: id,
+        stock: count,
+      })
+      .then((res) => {
+        window.location.reload();
+      })
+      .catch((err) => console.log("ERROR EN DEL", err));
   };
 
   return (
@@ -95,9 +99,6 @@ const SingleProduct = ({ product }) => {
             </button>
           </div>
 
-          <div className={styles.favorites}>
-            <span>Agregar a Favoritos </span>
-          </div>
           <div>
             <span className={styles.cart}>Ir al Carrito</span>
             <div className={styles.carrito}>

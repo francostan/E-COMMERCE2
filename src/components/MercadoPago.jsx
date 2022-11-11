@@ -4,32 +4,32 @@ import axios from "axios";
 
 const FORM_ID = "payment-form";
 
-export default function Product() {
+export default function Product({ carrito, order }) {
   /* const { id } = useParams(); // id de producto */
   const [preferenceId, setPreferenceId] = useState(null);
 
+  console.log("carrito llega asi ", carrito);
   /*   useEffect(() => {
     // luego de montarse el componente, le pedimos al backend el preferenceId
     
   }, []); */
 
-  const handleClick = () => {
-    axios
-      .post("/api/pay/payment", [
-        {
-          id: 1,
-          name: "rico",
-          image:
-            "https://www.adslzone.net/app/uploads-adslzone.net/2019/04/borrar-fondo-imagen.jpg",
-          description: "hola",
-          quantity: 1,
-          price: 1200,
-        },
-      ])
-      .then((order) => {
-        console.log(order.data);
-        setPreferenceId(order.data);
-      });
+  const handleClick = async () => {
+    await axios.post("/api/pay/payment", carrito).then((order) => {
+      console.log(order.data);
+      setPreferenceId(order.data);
+    });
+    const orderId = await axios.post("/api/orderdetail/addCheckout", order);
+    carrito.forEach(async (elemento) => {
+      console.log("esto es orderId", orderId);
+      const details = {
+        productId: elemento.productId,
+        cantidad: elemento.stock,
+        orderDetailId: orderId.data.id,
+      };
+      await axios.post("/api/orderItems/add", details);
+    });
+    await axios.delete("/api/carts/");
   };
 
   useEffect(() => {

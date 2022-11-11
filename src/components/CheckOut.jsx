@@ -15,10 +15,12 @@ function CheckOut() {
       setTickets(respuesta);
     });
   }, []);
+
   //  console.log(tickets[0].id);
   return (
-    <div className="container">
+    <div className="containerCheckOut">
       <h1>Mis compras:</h1>
+
       {tickets.map((ticket) => {
         return <ShowOrderDetails tickets={ticket} />;
       })}

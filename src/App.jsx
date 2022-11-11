@@ -24,7 +24,8 @@ import Category from "./components/Category";
 import CheckOut from "./components/CheckOut";
 import OrderItem from "./commons/OrderItem";
 import Success from "./components/Success";
-
+import SideBar from "./components/SideBar";
+import Cart from "./components/Cart";
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +46,7 @@ function App() {
   return (
     <div>
       <Navbar />
+      <SideBar />
       <Routes>
         <Route path="/*" element={<Home />} />
         <Route path="/" element={<Navigate to={"/home"} />} />
@@ -76,7 +78,6 @@ function App() {
         <Route path="/products/:id" element={<ProductDetails />} />
 
         <Route path="/carts" element={<Cart />} />
-
       </Routes>
     </div>
   );

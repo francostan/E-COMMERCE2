@@ -1,10 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import CardItems from "../commons/CardItems";
 import styles from "../Styles/Cart.module.css";
+import { setSubTotal } from "../store/subtotal";
+import MercadoPago from "./MercadoPago";
 
 const Cart = () => {
   const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+
+  const subTotal = useSelector((state) => state.subtotal);
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     axios
@@ -24,9 +31,37 @@ const Cart = () => {
   }, []);
 
   const subTot = products.reduce((a, c) => a + c.stock * c.precio, 0);
+  // dispatch(setSubTotal(subTotal));
 
-  console.log(subTot);
-  console.log(products);
+  const mercadopago = products.map((elemento) => {
+    return {
+      userId: user.id,
+      total: subTot,
+      ...elemento,
+      name: elemento.nombre,
+      price: elemento.precio,
+      image: elemento.images,
+      description: elemento.descripcion,
+      quantity: elemento.stock,
+    };
+  });
+
+  let order = products.map((elemento) => {
+    return {
+      userId: user.id,
+      total: subTot,
+    };
+  });
+
+  order = order[0];
+
+  console.log("mp es ", mercadopago);
+  const handleDelete = async () => {
+    const borrado = await axios.delete("/api/carts");
+    window.location.reload();
+  };
+
+  const handleCompra = () => {};
 
   return (
     <>
@@ -58,7 +93,7 @@ const Cart = () => {
                     <td></td>
                     <td>Subtotal:</td>
                     <td>
-                      <p>${subTot}</p>
+                      <p>{`$ ${subTot} `} </p>
                     </td>
                     <td></td>
                   </tr>
@@ -69,7 +104,17 @@ const Cart = () => {
                   <button>CONTINUAR COMPRANDO</button>
                 </div>
                 <div>
-                  <button>FINALIZAR COMPRA</button>
+                  <MercadoPago carrito={mercadopago} order={order} />
+                </div>
+                <div>
+                  <button>
+                    <span
+                      class="material-symbols-rounded"
+                      onClick={handleDelete}
+                    >
+                      delete
+                    </span>
+                  </button>
                 </div>
               </div>
             </div>
