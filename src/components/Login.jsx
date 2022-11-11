@@ -27,7 +27,10 @@ export const Login = () => {
         );
         navigate("/");
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        alert("Usuario o contraseña incorrecta");
+        console.error(err);
+      });
   };
 
   return (

@@ -4,7 +4,7 @@ import styles from "../Styles/Grid.module.css";
 
 //ListVinos recibe del componente padre el array de la api con los vinos y fakeData se cambia por ese array
 
-export default function ({ listVinos }) {
+export default function Grid({ listVinos }) {
   return (
     <div>
       <ul className={styles.layoutDeVinos}>
