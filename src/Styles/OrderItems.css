@@ -1,0 +1,44 @@
+.contenedor {
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+  display: flex;
+}
+
+.contenedor img {
+  object-fit: fill;
+  border-radius: 20px;
+}
+
+.compra {
+  width: 100%;
+  max-width: 80vw;
+  display: grid;
+}
+
+.tarjeta {
+  /* background: rgb(131, 58, 180);
+  background: linear-gradient(
+    90deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  ); */
+  background-color: #3b1c32;
+  display: flex;
+  margin: 10px;
+  height: 50vh;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.datos {
+  margin-left: 3rem;
+  color: white;
+}
+
+.imagenContainer {
+  height: 40vh;
+  width: 20vw;
+  margin-left: 18rem;
+}
