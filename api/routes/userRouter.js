@@ -26,5 +26,13 @@ router.post("/login", (req, res) => {
 router.post("/logout", (req, res) => {
   userController.logoutUser(req, res);
 });
+
+router.put("/usermod", (req, res, next) => {
+  userController.modifyUser(req, res, next);
+});
+
+router.delete("/delete/:id", (req, res, next) => {
+  userController.deleteUser(req, res, next);
+});
 //hola mundo
 module.exports = router;

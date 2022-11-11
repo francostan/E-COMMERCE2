@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import Grid from "../commons/Grid";
 import { useState, useEffect } from "react";

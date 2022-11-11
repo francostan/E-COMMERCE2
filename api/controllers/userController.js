@@ -6,11 +6,51 @@ class userController {
   static async createUser(req, res) {
     const { name, lastname, email, password } = req.body;
     try {
-      const user = await User.create({ name, lastname, email, password });
+      const firstUser = await User.findByPk(1);
+      if (!firstUser) {
+        const user = await User.create({
+          id: 1,
+          name,
+          lastname,
+          email,
+          password,
+          isAdmin: true,
+        });
+        return res.status(201).json(user);
+      }
+
+      const user = await User.create({
+        name,
+        lastname,
+        email,
+        password,
+        isAdmin: false,
+      });
 
       res.status(201).json(user);
     } catch (err) {
       console.log("error en el proceso", err);
+    }
+  }
+
+  static async deleteUser(req, res, next) {
+    try {
+      await User.destroy({ where: { id: req.params.id } });
+      res.sendStatus(202);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  static async modifyUser(req, res, next) {
+    try {
+      const usuarioActualizado = await User.update(req.body, {
+        where: { id: req.body.id },
+        returning: true,
+      });
+      res.status(201).send(usuarioActualizado);
+    } catch (err) {
+      console.error(err);
     }
   }
 
@@ -36,6 +76,7 @@ class userController {
             name: user.name,
             lastname: user.lastname,
             email: user.email,
+            isAdmin: user.isAdmin,
           };
           const token = decodeToken.generateToken(payload);
           //le pasamos a la cookie el token, con el metodo generateToken que sign el user, que persiste durante 2 horas

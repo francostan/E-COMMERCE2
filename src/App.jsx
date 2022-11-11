@@ -13,11 +13,18 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "./store/user";
 import MercadoPago from "./components/MercadoPago";
+
+import AdminView from "./components/AdminView";
+import AddProduct from "./components/AddProduct";
+import DropDown from "./components/DropDown";
+import UserEdit from "./components/UserEdit";
+import ModificarProduct from "./components/ModificarProduct";
+
 import Category from "./components/Category";
 import CheckOut from "./components/CheckOut";
 import OrderItem from "./commons/OrderItem";
 import Success from "./components/Success";
-//Consultar a fran el dispatch del user, para el ternario de las rutas cuando exista user
+
 
 function App() {
   const dispatch = useDispatch();
@@ -50,6 +57,15 @@ function App() {
           </>
         ) : (
           <>
+            {user.isAdmin ? (
+              <>
+                <Route path="/admin" element={<AdminView />} />
+                <Route path="/admin/delete" element={<DropDown />} />
+                <Route path="/admin/add" element={<AddProduct />} />
+                <Route path="/admin/user" element={<UserEdit />} />
+                <Route path="/admin/modify" element={<ModificarProduct />} />
+              </>
+            ) : null}
             <Route path={`/favoritos/${user.id}`} element={<Favoritos />} />
             <Route path="/pay" element={<MercadoPago />} />
             <Route path="/misCompras" element={<CheckOut />} />
