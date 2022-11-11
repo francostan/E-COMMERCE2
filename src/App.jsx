@@ -14,7 +14,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "./store/user";
 import MercadoPago from "./components/MercadoPago";
 import Category from "./components/Category";
-
+import CheckOut from "./components/CheckOut";
+import OrderItem from "./commons/OrderItem";
 //Consultar a fran el dispatch del user, para el ternario de las rutas cuando exista user
 
 function App() {
@@ -50,6 +51,8 @@ function App() {
           <>
             <Route path={`/favoritos/${user.id}`} element={<Favoritos />} />
             <Route path="/pay" element={<MercadoPago />} />
+            <Route path="/misCompras" element={<CheckOut />} />
+            <Route path="/misCompras/:id" element={<OrderItem />} />
           </>
         )}
         <Route path="/products/:id" element={<ProductDetails />} />
