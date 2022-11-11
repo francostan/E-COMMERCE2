@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
-import "../Styles/DropDown.css";
+import styles from "../Styles/DropDown.module.css";
 
 export default function DropDown() {
   const initialState = {
@@ -49,7 +49,7 @@ export default function DropDown() {
       <Select value={input} options={options} onChange={handleSelect} />
 
       <div>
-        <div className="deleteContainer">
+        <div className={styles["deleteContainer"]}>
           <div>
             <h2>Panel para borrar</h2>
           </div>
@@ -58,7 +58,11 @@ export default function DropDown() {
           <div>Stock: {`${auxData.stock}`}</div>
           <div>
             <button onClick={handleDelete}>
-              <span class="adminIcons material-symbols-rounded">delete</span>
+              <span
+                className={`${styles["adminIcons"]} material-symbols-rounded`}
+              >
+                delete
+              </span>
             </button>
           </div>
         </div>

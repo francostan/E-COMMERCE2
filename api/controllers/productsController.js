@@ -56,4 +56,23 @@ const deleteById = async (req, res, next) => {
   }
 };
 
-module.exports = { getAll, getById, deleteById, addProducts, addAll };
+const modifyProduct = async (req, res, next) => {
+  try {
+    const productActualizado = await Products.update(req.body, {
+      where: { id: req.body.id },
+      returning: true,
+    });
+    res.status(201).send(productActualizado);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+module.exports = {
+  getAll,
+  getById,
+  deleteById,
+  addProducts,
+  addAll,
+  modifyProduct,
+};

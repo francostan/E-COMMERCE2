@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
 
-import "../Styles/UserEdit.css";
+import styles from "../Styles/UserEdit.module.css";
 
 export default function UserEdit() {
   const initialState = {
@@ -71,20 +71,20 @@ export default function UserEdit() {
   return (
     <>
       <Select value={input} options={options} onChange={handleSelect} />
-      <div className="adminUserContainer">
-        <div class="parent">
-          <div class="div1">Nombre</div>
-          <div class="div2">Apellido</div>
-          <div class="div3">Email</div>
-          <div class="div4">Admin</div>
-          <div class="div5">{input.name}</div>
-          <div class="div6">{input.lastname}</div>
-          <div class="div7">{input.email}</div>
-          <div class="div8">{input.esAdmin}</div>
+      <div className={styles["adminUserContainer"]}>
+        <div className={styles["parent"]}>
+          <div className={styles["div1"]}>Nombre</div>
+          <div className={styles["div2"]}>Apellido</div>
+          <div className={styles["div3"]}>Email</div>
+          <div className={styles["div4"]}>Admin</div>
+          <div className={styles["div5"]}>{input.name}</div>
+          <div className={styles["div6"]}>{input.lastname}</div>
+          <div className={styles["div7"]}>{input.email}</div>
+          <div className={styles["div8"]}>{input.esAdmin}</div>
 
           {!toggle ? null : (
             <>
-              <div class="div9">
+              <div className={styles["div9"]}>
                 <input
                   type="text"
                   name="name"
@@ -93,7 +93,7 @@ export default function UserEdit() {
                   onChange={handlerInput}
                 />
               </div>
-              <div class="div10">
+              <div className={styles["div10"]}>
                 {" "}
                 <input
                   type="text"
@@ -103,7 +103,7 @@ export default function UserEdit() {
                   placeholder={input.lastname}
                 />
               </div>
-              <div class="div11">
+              <div className={styles["div11"]}>
                 {" "}
                 <input
                   type="email"
@@ -113,7 +113,7 @@ export default function UserEdit() {
                   placeholder={input.email}
                 />
               </div>
-              <div class="div12">
+              <div className={styles["div12"]}>
                 {" "}
                 <input
                   type="checkbox"
@@ -127,7 +127,7 @@ export default function UserEdit() {
             </>
           )}
 
-          <div class="div13">
+          <div className={styles["div13"]}>
             {" "}
             <button onClick={handlerBtnModificar}>Modificar</button>
           </div>

@@ -7,6 +7,7 @@ const {
   deleteById,
   addProducts,
   addAll,
+  modifyProduct,
 } = require("../controllers/productsController");
 
 // find all api/products
@@ -24,11 +25,7 @@ router.post("/add", addProducts);
 ///api/products/addAll
 router.post("/addAll", addAll);
 
-router.put("/:id", (req, res, next) => {
-  console.log(
-    "end point del put, solo hay que ver que es lo que quiero modificar en este path"
-  );
-});
+router.put("/productmod", modifyProduct);
 
 // api/products/:id
 router.delete("/:id", deleteById);
