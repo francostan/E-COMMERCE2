@@ -13,12 +13,18 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "./store/user";
 import MercadoPago from "./components/MercadoPago";
+
 import AdminView from "./components/AdminView";
 import AddProduct from "./components/AddProduct";
 import DropDown from "./components/DropDown";
 import UserEdit from "./components/UserEdit";
 import ModificarProduct from "./components/ModificarProduct";
-//Consultar a fran el dispatch del user, para el ternario de las rutas cuando exista user
+
+import Category from "./components/Category";
+import CheckOut from "./components/CheckOut";
+import OrderItem from "./commons/OrderItem";
+import Success from "./components/Success";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -43,6 +49,7 @@ function App() {
         <Route path="/*" element={<Home />} />
         <Route path="/" element={<Navigate to={"/home"} />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/category" element={<Category />} />
         {!user.id ? (
           <>
             <Route path="/login" element={<Login />} />
@@ -61,9 +68,13 @@ function App() {
             ) : null}
             <Route path={`/favoritos/${user.id}`} element={<Favoritos />} />
             <Route path="/pay" element={<MercadoPago />} />
+            <Route path="/misCompras" element={<CheckOut />} />
+            <Route path="/misCompras/:id" element={<OrderItem />} />
+            <Route path="/success" element={<Success />} />
           </>
         )}
         <Route path="/products/:id" element={<ProductDetails />} />
+        {/* <Route path="/carts/:id" element={<Cart />} /> */}
       </Routes>
     </div>
   );

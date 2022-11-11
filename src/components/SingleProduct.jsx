@@ -1,46 +1,48 @@
-import React, { useEffect, useState } from "react";
+import axios from "axios";
+import React, { useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import styles from "../Styles/SingleProduct.module.css";
 
 const SingleProduct = ({ product }) => {
   const { id, nombre, images, bodega, descripcion, variedad, precio, stock } =
     product;
-
-  const stockValue = stock;
-
+  const user = useSelector((state) => state.user);
   const [count, setCount] = useState(1);
-  const [stockVal, setStockVal] = useState(stockValue);
+  const [stockVal, setStockVal] = useState(null);
+
+  console.log(product);
+
+  const value = useRef(null);
+
+  if (!value.current)
+    setTimeout(() => {
+      setStockVal(stock);
+      value.current = value.current + 1;
+    }, 350);
 
   const increase = () => {
     setCount(count + 1);
     setStockVal(stockVal - 1);
   };
+
   const decrease = () => {
     setCount(count - 1);
     setStockVal(stockVal + 1);
   };
 
-  console.log(stockVal);
-  /*   const [product, setProduct] = useState({});
-
-  useEffect(() => {
-    if (id !== undefined) {
-      const { data } = axios.get(`/api/products/${id}`);
-      console.log(data);
-      setProduct(data);
-    }
-    return () => {
-      console.log("product");
-    };
-  }, [id]);
-  console.log(product);
-
-return null; */
+  const handleClick = (e) => {
+    e.preventDefault();
+    axios
+      .post("/api/carts/add", { userId: user.id, productId: id, stock: count })
+      .then((result) => console.log("PRODUCTO AGREGADO", result))
+      .catch((err) => console.log("error", err));
+  };
 
   return (
     <div className={styles.container} key={id}>
-      <div className={styles.imgContainer}>
-        <div className={styles.img}>
-          <img src={images} alt={`${nombre}`} />
+      <div className={styles.imgBox}>
+        <div className={styles.imgCont}>
+          <img src={images} alt={`${nombre}`} className={styles.img} />
         </div>
       </div>
       <div className={styles.productDetails}>
@@ -54,7 +56,7 @@ return null; */
           <span className={styles.precio}>${precio}</span>
           <div>
             <p className={styles.stock}>En Stock</p>
-            <p className={styles.stock}>{stockVal}uds.</p>
+            <p className={styles.stock}>{stockVal - 1}uds.</p>
           </div>
         </div>
         <div className={styles.qty}>
@@ -62,26 +64,32 @@ return null; */
             CANTIDAD
           </span>
           <div className={styles.control}>
-            <button
-              disabled={count <= 1}
-              className={styles.button}
-              onClick={decrease}
-            >
-              -
-            </button>
-            <span>
-              <input className={styles.input} value={count} />
-            </span>
-            <button className={styles.button} onClick={increase}>
-              +
-            </button>{" "}
-            {/* disabled cuanto count sea >= que el Stock  */}
+            <div className={styles.inputButtons}>
+              <input
+                disabled={count <= 1}
+                className={styles.button}
+                onClick={decrease}
+                type="button"
+                value={"-"}
+              />
+            </div>
+            <input className={styles.input} value={count} />
+            <div className={styles.inputButtons}>
+              <input
+                disabled={count === stock}
+                className={styles.button}
+                onClick={increase}
+                type="button"
+                value={"+"}
+              />
+            </div>
           </div>
         </div>
         <div className={styles.comprar}>
-          <button style={{ cursor: "pointer" }}>COMPRAR</button>
+          <button style={{ cursor: "pointer" }} onClick={handleClick}>
+            COMPRAR
+          </button>
         </div>
-        {/* Link al carrito */}
         {/*  <Link to="/favoritos"> */}
         <div className={styles.favorites}>
           <span> Agregar a Favoritos</span>
