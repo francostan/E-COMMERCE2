@@ -74,7 +74,9 @@ function App() {
           </>
         )}
         <Route path="/products/:id" element={<ProductDetails />} />
-        {/* <Route path="/carts/:id" element={<Cart />} /> */}
+
+        <Route path="/carts" element={<Cart />} />
+
       </Routes>
     </div>
   );

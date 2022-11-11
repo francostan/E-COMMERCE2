@@ -1,0 +1,37 @@
+.buttonContainer {
+  width: 80%;
+  margin: 0 auto;
+}
+.button {
+  border: solid 3px #2a264f;
+  width: 25px;
+  height: 20px;
+  font-size: 0.705em;
+  font-weight: 800;
+  color: #2a264f;
+  background-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.precio {
+  width: 15%;
+}
+
+.imagen {
+  margin-top: 10px;
+  border-radius: 3px;
+  width: 8em;
+  height: 8em;
+}
+
+.input {
+  border: solid 3px #2a264f;
+  width: 25px;
+  height: 2em;
+  text-align: center;
+  font-size: 0.75em;
+  margin-right: 2px;
+  margin-left: 2px;
+  border-radius: 5px;
+}

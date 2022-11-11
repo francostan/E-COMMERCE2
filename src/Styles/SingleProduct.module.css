@@ -33,16 +33,22 @@
 body {
   background-color: #fff;
 }
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 2em;
+}
+
 .container {
   display: flex;
-  margin: 0 auto;
-  margin-top: 3rem;
-  width: 80vw;
-  height: auto;
+  width: 100%;
   border: solid 4px black;
   border-radius: 50px;
   background-color: #fff;
-  justify-content: space-between;
 }
 .imgBox {
   display: flex;
@@ -204,4 +210,13 @@ body {
   margin-top: 2rem;
   margin-left: 2rem;
   color: #f6f8fa;
+}
+
+.cart {
+  color: white;
+}
+
+.carrito {
+  display: flex;
+  color: white;
 }

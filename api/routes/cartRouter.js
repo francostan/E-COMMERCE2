@@ -6,6 +6,7 @@ const {
   addIntoCart,
   emptyCart,
   decreaseCart,
+  removeItem,
 } = require("../controllers/cartController");
 
 //api/carts/:id
@@ -27,5 +28,8 @@ router.delete("/", emptyCart);
 //api/carts/item
 //saca productos del carrito pasandole el id del usuario y del producto
 router.delete("/item", decreaseCart);
+
+///api/carts/itemId
+router.delete("/itemId", removeItem);
 
 module.exports = router;

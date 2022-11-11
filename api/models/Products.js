@@ -13,6 +13,10 @@ Products.init(
       type: S.STRING(1000),
       allowNull: false,
     },
+    variedad: {
+      type: S.STRING,
+      allowNull: true,
+    },
     bodega: {
       type: S.STRING,
       allowNull: false,
