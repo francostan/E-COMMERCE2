@@ -3,8 +3,9 @@ const express = require("express");
 const router = express.Router();
 const { sendMail } = require("../config/emailer");
 
-router.get("/", (req, res, next) => {
-  sendMail();
+router.post("/", (req, res, next) => {
+  console.log(req.body);
+  sendMail(req.body.email);
   res.send("Pago exitoso");
 });
 

@@ -1,0 +1,32 @@
+.container{
+    height: 60vh;
+    width: 60vw;
+    background-color: #4c8543;
+    color: white;
+    margin-top: 15vh;
+    border-radius: 10px;
+}
+
+.father{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+}
+.button{
+    background-color: #e3e7e2;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+.success{
+  margin-top: 11vh;
+}

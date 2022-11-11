@@ -34,7 +34,7 @@ class payController {
         //------------------------------
       },
       back_urls: {
-        success: "http://www.localhost:3000/home",
+        success: "http://localhost:3000/success",
         failure: "http://www.failure.com",
         pending: "http://www.pending.com",
       },
