@@ -1,4 +1,4 @@
-const decodeToken = require('../config/token');
+const decodeToken = require("../config/token");
 
 function validateCookie(req, res) {
   const token = req.cookies.token;

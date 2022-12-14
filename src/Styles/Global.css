@@ -1,3 +1,44 @@
+@import url("https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css");
+* {
+  text-decoration: none;
+}
 body {
-  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #b3a7b8;
+  box-sizing: border-box;
+  font-family: "Noto Sans", sans-serif;
+  min-height: 100vh;
+}
+
+.favIcons {
+  cursor: pointer;
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+
+.material-symbols-rounded {
+  cursor: pointer;
+}
+.material-symbols-rounded:hover {
+  transform: scale(0.8);
+  -webkit-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  transition: 150ms ease-in-out;
+}
+
+button {
+  background-color: #b3a7b8;
+  font-family: inherit;
+  color: white;
+  padding: 0.5em 1em;
+  font-size: 0.9em;
+  border-radius: 0.5em;
+  border-width: 0.1em;
+  border-color: black;
+  border-style: solid;
+  transition: all 0.3s;
+}
+
+button:hover {
+  background-color: rgba(126, 115, 131, 0.4);
 }

@@ -33,9 +33,9 @@ User.init(
       type: S.STRING,
       allowNull: false,
     },
-    category: {
-      type: S.STRING,
-      defaultValue: "user",
+    isAdmin: {
+      type: S.BOOLEAN,
+      defaultValue: false,
     },
     birthDate: {
       type: S.DATE,

@@ -1,0 +1,89 @@
+.parentProductModificar {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr) 2fr;
+  grid-template-rows: 0.2fr repeat(3, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 20px;
+
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.01);
+}
+
+.div1ProductModificar {
+  grid-area: 1 / 1 / 2 / 2;
+  text-align: center;
+}
+.div2ProductModificar {
+  grid-area: 1 / 2 / 2 / 3;
+  text-align: center;
+}
+.div3ProductModificar {
+  grid-area: 1 / 3 / 2 / 4;
+  text-align: center;
+}
+.div4ProductModificar {
+  grid-area: 1 / 4 / 2 / 5;
+  text-align: center;
+}
+.div5ProductModificar {
+  grid-area: 1 / 5 / 2 / 6;
+  text-align: center;
+}
+.div6ProductModificar {
+  grid-area: 2 / 1 / 3 / 2;
+  text-align: center;
+}
+.div7ProductModificar {
+  grid-area: 2 / 2 / 3 / 3;
+  text-align: center;
+}
+.div8ProductModificar {
+  grid-area: 2 / 3 / 3 / 4;
+  text-align: center;
+}
+.div9ProductModificar {
+  grid-area: 2 / 4 / 3 / 5;
+  text-align: center;
+}
+.div10ProductModificar {
+  grid-area: 2 / 5 / 3 / 6;
+  text-align: center;
+}
+.div11ProductModificar {
+  grid-area: 1 / 6 / 3 / 7;
+  text-align: center;
+}
+
+.div10ProductModificar img {
+  position: relative;
+  text-align: center;
+}
+
+.div12ProductModificar {
+  grid-area: 3 / 1 / 4 / 2;
+  text-align: center;
+}
+.div13ProductModificar {
+  grid-area: 3 / 2 / 4 / 3;
+  text-align: center;
+}
+.div14ProductModificar {
+  grid-area: 3 / 3 / 4 / 4;
+  text-align: center;
+}
+.div15ProductModificar {
+  grid-area: 3 / 4 / 4 / 5;
+  text-align: center;
+}
+.div16ProductModificar {
+  grid-area: 3 / 5 / 4 / 6;
+  text-align: center;
+}
+.div17ProductModificar {
+  grid-area: 3 / 6 / 4 / 7;
+  text-align: center;
+}
+.div18ProductModificar {
+  text-align: center;
+  grid-area: 4 / 1 / 5 / 7;
+}

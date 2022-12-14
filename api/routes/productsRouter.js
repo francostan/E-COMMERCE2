@@ -1,5 +1,4 @@
 const express = require("express");
-const CarritoDeCompras = require("../models/ShoppingCart");
 
 const router = express.Router();
 const {
@@ -7,6 +6,8 @@ const {
   getById,
   deleteById,
   addProducts,
+  addAll,
+  modifyProduct,
 } = require("../controllers/productsController");
 
 // find all api/products
@@ -21,26 +22,12 @@ router.get("/:id", getById);
 //Ya testeado
 router.post("/add", addProducts);
 
-router.put("/:id", (req, res, next) => {
-  console.log(
-    "end point del put, solo hay que ver que es lo que quiero modificar en este path"
-  );
-});
+///api/products/addAll
+router.post("/addAll", addAll);
+
+router.put("/productmod", modifyProduct);
 
 // api/products/:id
 router.delete("/:id", deleteById);
-
-//Ruta para testear las relaciones de la db, de momento solo ignorar
-
-// router.post("/test", (req, res, next) => {
-//   const { lastname, email, name, id } = req.body;
-
-//   CarritoDeCompras.findOrCreate({ where: { userId: id } })
-//     .then((carrito) => {
-//       console.log(carrito);
-//     })
-//     .catch((err) => console.log("entro al catch", err));
-//   res.sendStatus(201);
-// });
 
 module.exports = router;

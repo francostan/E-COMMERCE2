@@ -15,13 +15,12 @@ li {
 
 .card .img1 {
   position: absolute;
-  top: 0;
-  left: 0;
+
   height: 100%;
   width: 100%;
 
   background-size: 330px 330px;
-  background-position: left top;
+  background-position: center;
   transition: all 0.5s ease-in-out;
 }
 

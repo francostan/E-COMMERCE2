@@ -10,8 +10,12 @@ Products.init(
       allowNull: false,
     },
     descripcion: {
-      type: S.STRING,
+      type: S.STRING(1000),
       allowNull: false,
+    },
+    variedad: {
+      type: S.STRING,
+      allowNull: true,
     },
     bodega: {
       type: S.STRING,
@@ -23,7 +27,7 @@ Products.init(
     },
     tipo: {
       type: S.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     precio: {
       type: S.INTEGER,
@@ -35,7 +39,10 @@ Products.init(
     },
     stock: {
       type: S.INTEGER,
-      defaultValue: 0,
+      defaultValue: 1,
+    },
+    images: {
+      type: S.STRING,
     },
   },
   { sequelize: db, modelName: "products" }

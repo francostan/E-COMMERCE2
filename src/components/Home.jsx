@@ -1,12 +1,13 @@
 import React from "react";
+
 import Header from "../commons/Header";
-import Navbar from "./NavBar";
+import SideBar from "./SideBar";
+import styles from "../Styles/Home.module.css";
 function Home() {
   return (
     <div>
-      <Navbar />
-      <br />
-      <Header />
+      <div className={styles.space}></div>
+      <Header className={styles.header} />
     </div>
   );
 }

@@ -1,0 +1,33 @@
+.containerCheckOut {
+  display: grid;
+
+  height: 100vh;
+  justify-content: center;
+  text-align: center;
+}
+
+title {
+}
+
+.card {
+  margin-bottom: 3rem;
+  background-color: #3b1c32;
+  height: 33vh;
+  width: 40vw;
+  box-sizing: border-box;
+  font-size: 20px;
+  margin-top: 1rem;
+  color: #c89933;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.details {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.details:hover {
+  color: rgb(179, 179, 179);
+}
