@@ -3,9 +3,6 @@ INICIAR PROYECTO
 -----------------------------------------------------------------------------
 
 
--SITUARSE EN RAMA PRODUCCION CON GIT CHECKOUT PRODUCCION
-
-
 -INSTALAR DEPENDENCIAS TANTO EN BACK(API) Y FRONT (PACKAGE JSON GRAL)
 
 
